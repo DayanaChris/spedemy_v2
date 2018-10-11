@@ -1,0 +1,404 @@
+body{
+	background:#d7eef7;
+	background-image: url('../img/SignIn&Up/signbackground.jpg');
+	background-repeat: no-repeat;
+	background-size: 1366px 673px;;
+	margin: 0px;
+	padding: 0px;
+}
+
+a{
+	color:#fff;
+	text-decoration: none;
+}
+
+#sign-nav{
+	position: absolute;	
+	bottom: 470px;
+}
+
+#sign-nav li{
+	display: inline-block;
+	margin: 0px;
+}
+
+.imgD{
+	position: relative;
+	width:1300px;
+	height:620px;
+	top: 488px;
+	left:0px;
+}
+
+.textA{
+	position: absolute;
+ 	top: 90%;
+    left:41.8%;
+	text-align: left;
+	font-size:40px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.imgE{
+	position: relative;
+	top: 40px;
+	left:452px;
+}	
+
+.textB{
+	position: absolute;
+ 	top:104%;
+    left:35.5%;
+	text-align:left;
+	font-size:25px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.user{
+	position: absolute;
+ 	top:114%;
+    left:35.5%;
+    size: 50% 20%;
+    font-size: 25px; 
+    font-family: Verdana;
+    color:#005a8a;
+    border-color: #005a8a;
+}
+
+.textC{
+	position: absolute;
+ 	top: 119%;
+    left:35.5%;
+	text-align:left;
+	font-size:25px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.pass{
+	position: absolute;
+ 	top:129%;
+    left:35.5%;
+    size: 50% 20%;
+    font-size: 25px;
+    font-family: Verdana;
+    color:#005a8a;
+    border-color: #005a8a; 
+}
+
+#button-nav{
+	position: absolute;	
+	bottom:430px;
+	left:940px;
+}
+
+#button-nav li{
+	display: inline-block;
+	margin: 0px;
+}
+
+.imgF{
+	position: absolute;	
+	top: 660px;
+	right:340px;
+}
+
+.imgG{
+	position: absolute;	
+	top: 702px;
+	right:180px;
+}
+
+.imgH{
+	position: absolute;	
+	top: 695px;
+	right:340px;
+}
+
+.textD{
+	position: absolute;
+ 	top:138.5%;
+   	right:48.8%;
+	text-align:left;
+	font-size:25px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.textE{
+	position: absolute;
+ 	top:153%;
+   	right:49.5%;
+	text-align:left;
+	font-size:15px;
+	font-family: Verdana;
+	color:#005a8a;
+}
+
+.textF{
+	position: absolute;
+ 	top:155%;
+   	right:41%;
+	text-align:left;
+	font-size:15px;
+	font-family: Verdana;
+	color:#78569a;;
+}
+
+.imgI{
+	position: absolute;	
+	top: 455px;
+	left:1220px;
+}
+
+_______________________________________________________________________________________________________________________________________
+
+#second-nav{
+	position: absolute;	
+	bottom: 970px;
+}
+
+#second-nav li{
+	display: inline-block;
+	margin: 0px;
+}
+
+.img1{
+	position: absolute;
+	width:1435px;
+	height:660px; 
+	top:10px;
+	right:0px;
+}
+
+.text1{
+	position: absolute;
+ 	top:17.5%;
+    left:27%;
+	text-align: left;
+	font-size:23px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.img2{
+	position: relative;
+	top: 160px;
+	left:352.5px;
+}	
+
+.text2{
+	position: absolute;
+ 	top:24.5%;
+    left:46%;
+	text-align:left;
+	font-size:18px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.user2{
+	position: absolute;
+ 	top:30%;
+    left:46%;
+    size: 70% 10%;
+    font-size: 16px; 
+    font-family: Verdana;
+    color:#005a8a;
+    border-color: #005a8a;
+}
+
+.text3{
+	position: absolute;
+ 	top: 31.4%;
+    left:46%;
+	text-align:left;
+	font-size:18px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.pass2{
+	position: absolute;
+ 	top:37.5%;
+    left:46%;
+    size: 50% 20%;
+    font-size:16px;
+    font-family: Verdana;
+    color:#005a8a;
+    border-color: #005a8a; 
+}
+
+.text4{
+	position: absolute;
+ 	top: 39.5%;
+    left:46%;
+	text-align:left;
+	font-size:18px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.child{
+	position: absolute;
+ 	top:45.2%;
+    left:46%;
+    size: 50% 20%;
+    font-size:16px;
+    font-family: Verdana;
+    color:#005a8a;
+    border-color: #005a8a; 
+}
+
+.text5{
+	position: absolute;
+ 	top: 46.8%;
+    left:46%;
+	text-align:left;
+	font-size:18px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.parent{
+	position: absolute;
+ 	top:52.5%;
+    left:46%;
+    size: 50% 20%;
+    font-size:16px;
+    font-family: Verdana;
+    color:#005a8a;
+    border-color: #005a8a; 
+}
+
+.text6{
+	position: absolute;
+ 	top: 54%;
+    left:46%;
+	text-align:left;
+	font-size:18px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.age{
+	position: absolute;
+ 	top:60%;
+    left:46%;
+    size: 50% 20%;
+    font-size:16px;
+    font-family: Verdana;
+    color:#005a8a;
+    border-color: #005a8a; 
+}
+
+.text7{
+	position: absolute;
+ 	top: 61.5%;
+    left:46%;
+	text-align:left;
+	font-size:18px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.gender{
+	position: absolute;
+ 	top:67%;
+    left:46%;
+    size: 50% 20%;
+    font-size:16px;
+    font-family: Verdana;
+    color:#005a8a;
+    border-color: #005a8a; 
+}
+
+.text8{
+	position: absolute;
+ 	top:69%;
+    left:46%;
+	text-align:left;
+	font-size:18px;
+	font-family: Verdana;
+	color:#005a8a;
+	font-weight: bold;
+}
+
+.email{
+	position: absolute;
+ 	top:74.9%;
+    left:46%;
+    size: 50% 120%;
+    font-size:16px;
+    font-family: Verdana;
+    color:#005a8a;
+    border-color: #005a8a; 
+}
+
+.img3{
+	position: absolute;	
+	top: 278px;
+	right:120px;
+}
+
+.img4{
+	position: absolute;	
+	top: 284px;
+	right:145px;
+}
+
+.img5{
+	position: absolute;	
+	top: 80px;
+	right:440px;
+}
+
+.img6{
+	position: absolute;	
+	top: 130px;
+	right:440px;
+}
+
+.text9{
+	position: absolute;
+ 	top:100px;
+    right:470px;
+	text-align: left;
+	font-size:20px;
+	font-family: Verdana;
+	color:#d7eef7;
+	font-weight: bold;
+}
+
+.text10{
+	position: absolute;
+ 	top:150px;
+    right:474px;
+	text-align: left;
+	font-size:20px;
+	font-family: Verdana;
+	color:#d7eef7;
+	font-weight: bold;
+}
+
+.img7{
+	position: absolute;	
+	bottom:101px;
+	left:280px;
+}
+
+
+

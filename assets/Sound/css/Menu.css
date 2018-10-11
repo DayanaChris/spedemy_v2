@@ -1,0 +1,105 @@
+body{
+	background:#00aeef;
+	background-image: url('../img/Menu/backgline jpg.jpg');
+	background-repeat: no-repeat;
+	background-size: 1500px 1073px;;
+	margin: 0px;
+	padding: 0px;
+}
+
+a{
+	color:#fff;
+	text-decoration: none;
+}
+
+header{
+	background:#78569a;
+	background-image: url("img/Homepage/logo.png");
+	height: 90px;
+}
+
+#left-nav{
+	float: left;
+	padding-left: 200px;
+	padding-top: 10px;
+	font-size:25px;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+ul li{
+	list-style-type: none;
+}
+
+.imgA{
+	position: absolute;
+ 	top: 1%;
+    left: 8%;
+}
+
+.textA{
+	position: absolute;
+	top: 30px;
+}
+
+.imgB{
+	position: absolute;
+ 	bottom: 1%;
+    left:4.5%;
+}
+
+.imgC{
+	position: absolute;
+ 	top: 25%;
+    left:10.5%;
+}
+
+.imgD{
+	position: absolute;
+ 	top: 25%;
+    left:38%;
+}
+
+.imgE{
+	position: absolute;
+ 	top: 25%;
+    left:64%;
+}
+
+.imgF{
+	position: absolute;
+ 	top: 57%;
+    left:12%;
+}
+
+.imgG{
+	position: absolute;
+ 	top: 57%;
+    left:38%;
+}
+
+.imgH{
+	position: absolute;
+ 	top: 57%;
+    left:64%;
+}
+
+.imgI{
+	position: absolute;
+ 	bottom: 73.3%;
+    left:68%;
+}
+
+.imgJ{
+	position: absolute;
+ 	bottom:87.5%;
+    left:91.2%;
+}
+
+.imgK{
+	position: absolute;
+ 	bottom:90%;
+    left:92.2%;
+}
+
+

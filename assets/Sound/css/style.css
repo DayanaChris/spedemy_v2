@@ -1,0 +1,182 @@
+body{
+	background:#d7eef7;
+	margin: 0px;
+	padding: 0px;
+
+}
+
+a{
+	color:#fff;
+	text-decoration: none;
+}
+
+header{
+	background:#78569a;
+	background-image: url("img/Homepage/logo.png");
+	height: 100px;
+}
+
+
+#left-nav{
+	float: left;
+	padding-left: 200px;
+	padding-top: 10px;
+	font-size:25px;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+#right-nav{
+	float: right;
+	padding-right: 180px;
+	padding-top: 10px;
+	font-size:20px;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+#right-nav li{
+	display: inline-block;
+	margin: 10px;
+}
+
+#right2-nav{
+	float: right;
+	padding-right: 80px;
+	padding-top: 10px;
+	font-size:20px;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+#right2-nav li{
+	display: inline-block;
+	margin: 10px;
+}
+
+#center-nav{
+	float: center; 	
+	font-size:20px;
+	padding-right: 25px;
+	text-align: center;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+#center-nav li{
+	display: inline-block;
+	margin:50px;
+}
+
+ul li{
+	list-style-type: none;
+}
+
+footer{
+	clear:both;
+	background:#78569a;
+	margin-top: 10px;
+	text-align: center;
+	padding:1px;	
+	color:#fff;
+}
+
+
+.imgA{
+	position: absolute;
+ 	top: 1%;
+    left: 8%;
+}
+
+.imgA1{
+	position: absolute;
+ 	bottom:82%;
+    left: 55%;
+}
+
+.imgA2{
+	position: absolute;
+ 	bottom:82%;
+    left: 72%;
+}
+
+.imgA3{
+	position: absolute;
+ 	bottom:84%;
+    left: 56%;
+}
+
+.imgA4{
+	position: absolute;
+ 	bottom:84%;
+    left: 72.9%;
+}
+
+.imgB{
+
+}
+
+.imgC{
+	padding-left: 60px;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+
+.textA{
+	position: absolute;
+ 	top: 14%;
+    left: 19%;
+	text-align: center;
+	font-size:40px;
+	font-family: Verdana;
+	color:#fff;
+	font-weight: bold;
+}
+
+.textB{
+	position: absolute;
+ 	top: 33%;
+    left: 16%;
+	text-align: center;
+	font-size:38px;
+	font-family: Verdana;
+	color:#78569a;
+	font-weight: bold;
+	padding-right: 185px;
+}
+
+
+.textC{
+	position: absolute;
+ 	top: 1%;
+    left: 58%;
+	text-align: center;
+	font-size:30px;
+	font-family: Verdana;
+	color:#fff;
+	font-weight: bold;
+}
+
+.textD{
+	position: absolute;
+ 	top: 1%;
+    left: 75%;
+	text-align: center;
+	font-size:30px;
+	font-family: Verdana;
+	color:#fff;
+	font-weight: bold;
+	padding-right: 185px;
+}
+
+_________________________________________________________________________________________________________________
+
+
+
+
+
