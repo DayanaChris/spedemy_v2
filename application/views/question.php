@@ -4,13 +4,11 @@
        background-color:transparent !important;
        border:none !important;
     }
-    body{
 
-    }
 
-h1{
+/* h1{
     font-size: 1.4em;
-}
+} */
 /* h1 { font-size: 5.9vw; } */
 </style>
       <div class="container float-right" id="clock" > </div>
@@ -41,16 +39,17 @@ h1{
              <div  class="" id="<?php echo $count; ?>"  style="width:90% ;<?php echo $display; ?>   background:#<?php echo $q->background?> no-repeat fixed center; padding:0">
                <div class="run-animation">
                  <div class="container ">
-                 <img  src="<?php echo site_url(); ?>assets/images/SPEDEMY/Lessons/Alphabet/A/head.png" style="width:80%; margin-top:2%">
+                 <img  src="<?php echo site_url(); ?>assets/images/head.png" style="width:80%; margin-top:2%">
                  <div class="centered_text">
-                    <h1 class="font-weight-bold smalltext" > <big>  <h1><?php echo $q->question?></h1> </big> </h1>
+                     <p  style="font-size:4vw;"> <?php echo $q->question?>  </p>
                  </div>
                  </div>
                  <div class="container run-animation ">
                    <div class="row">
                      <div class="col  " style="margin-top:0%">
                          <div class="col  " style="margin-top:0%">
-                           <img src="<?php echo base_url()?>assets/uploads/<?php echo $q->question_image?>" style="width:200px">
+                           <img class="choice" src="<?php echo base_url()?>assets/uploads/<?php echo $q->question_image?>">
+                            <!-- style="width:200px" -->
                          </div>
                        </div>
                    </div>
@@ -64,7 +63,10 @@ h1{
                       <?php
                       foreach ($get_answer->result() as $key => $value) {
                       ?>
-                        <div class="col  " style="margin-top:5%">  <img data-toggle="modal" data-target="#exampleModal" src="<?php echo base_url()?>assets/uploads/<?php echo $value->img_name?>" style="width:220px" class="clickimage zoom letterA"
+                        <div class="col  " style="margin-top:5%">
+                          <img data-toggle="modal" data-target="#exampleModal"
+                          src="<?php echo base_url()?>assets/uploads/<?php echo $value->img_name?>"
+                           class="clickimage zoom choices"
                           data-answer="<?php echo $value->is_correct ?>" data-id="<?php echo $value->quiz_id ?>" question-number="<?php echo $count;?>"  lesson="<?php echo $value->quiz_id;?>" >
                         </div>
                       <?php
@@ -90,10 +92,6 @@ h1{
             <body class=" run-animation" style="background:#<?php echo $q->background?>">
 
             <div  class="" id="<?php echo $count; ?>"  style="width:100% ; height: 100%;<?php echo $display; ?>   background:#<?php echo $q->background?> no-repeat fixed center; padding:0">
-
-            <!-- <div  class="" id="<?php echo $count; ?>"  style="<?php echo $display; ?>   background:#<?php echo $q->background?> no-repeat fixed center; padding:0"> -->
-
-            <!-- <div  class="" id="<?php echo $count; ?>"  style="<?php echo $display; ?>   background:#<?php echo $q->background?> no-repeat fixed center; padding:0"> -->
               <div class="run-animation">
                 <div class="container ">
                 <img  src="<?php echo site_url(); ?>assets/images/SPEDEMY/Lessons/Alphabet/A/head.png" style="width:80%; margin-top:2%">
@@ -386,7 +384,7 @@ h1{
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -404,6 +402,9 @@ h1{
         <div class="container-fluid" style="margin-top: 10px">
           <!-- <img src="<?php echo base_url()?>assets/images/SPEDEMY/Evaluation/platform.png" style="width: 70% ;"> -->
             <div class="container centered_text mx-auto d-block">
+              <div class="container " style="margin-top: 5px">
+                <img src="<?php echo base_url()?>assets/images/SPEDEMY/Evaluation/try_again.png" style="width: 50% ; margin-top: 30px ">
+              </div>
               <form class="text-center" role="form" method="post" action="<?php echo base_url()?>results/post"   style="font-size: 30px; color: white; font-weight: 1000;" >
                 <div class="text-center">
                 <div class="form-group row" style="display:none;">
@@ -472,12 +473,13 @@ h1{
               <div class="form-actions noborder">
                 <button type="submit" class="  btn blue">
                   <img src="<?php echo base_url()?>assets/images/SPEDEMY/Evaluation/yes_button.png" style="width: 100% ;">
-
                 </button>
-                <!-- <a href="<?php echo base_url()?>" class="btn default">
-                  <img src="<?php echo base_url()?>assets/images/SPEDEMY/Evaluation/no_button.png" style="width: 100% ;">
 
-                </a> -->
+                <a href="<?php echo base_url(); ?>tally " class="btn default">
+                  <img src="<?php echo base_url()?>assets/images/SPEDEMY/Evaluation/no_button.png" style="width: 100% ;">
+                </a>
+
+
               </div>
               </form>
 

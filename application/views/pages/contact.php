@@ -1,13 +1,14 @@
 
 <?php
-  $this->load->view('templates/header');
-  $this->load->view('templates/nav');  ?>
+  // $this->load->view('templates/header');
+  // $this->load->view('templates/nav');  ?>
 
 
 
-<body class="about_bg">
+<!-- <body class="about_bg"> -->
 
 
+<div class="about_bg">
 
   <div class="container" style="padding-top: 70px;">
 
@@ -72,6 +73,4 @@
 
   </div>
 </div>
-
-
-<?php  $this->load->view('templates/footer'); ?>
+</div>

@@ -39,7 +39,7 @@ if($is_edit == true){
         <form role="form" method="post" action="<?php echo base_url()?>category/post">
             <div class="form-body">
                 <div class="form-group form-md-line-input">
-                    <input type="text" class="form-control" id="form_control_1" name="<?php echo $name?>" value="<?php echo $value?>" required>
+                    <input onmousedown="mouseclick.play()" type="text" class="form-control" id="form_control_1" name="<?php echo $name?>" value="<?php echo $value?>" required>
                     <label for="form_control_1" class="col-sm-2 col-form-label">Category name</label>
 
                 </div>
@@ -50,8 +50,8 @@ if($is_edit == true){
 								<label for="form_control_1" class="col-sm-2 col-form-label">Category  Image</label>
 
 								<div class="col-md-4  ">
-									<input type="text" class="form-control input-inline input-medium img1" name="<?php echo $name_img?>" value="<?php echo $image?>" required />
-									<span class="help-inline"><a  class="btn btn-primary btn-lg active select_img" role="button" aria-pressed="true" id="1"  data-toggle="modal" href="#static">Upload or select image.</a></span>
+									<input onmousedown="mouseclick.play()" type="text" class="form-control input-inline input-medium img1" name="<?php echo $name_img?>" value="<?php echo $image?>" required />
+									<span class="help-inline"><a  class="btn btn-primary btn-lg active select_img" role="button" aria-pressed="true" id="1"  data-toggle="modal" onmousedown="mouseclick.play()" href="#static">Upload or select image.</a></span>
 									<!-- <span class="help-inline"><a class="select_img" id="1"  data-toggle="modal" href="#static">Upload or select image.</a></span> -->
 						    </div>
 
@@ -68,8 +68,8 @@ if($is_edit == true){
 
 								<div class="col-md-4  ">
 
-								 <input type="text" class="form-control input-inline input-medium img2 "  name="<?php echo $category_image_title?>" value="<?php echo $cat_image?>" required>
-								 <span class="help-inline"><a  class="btn btn-primary btn-lg active select_img" role="button" aria-pressed="true" id="2"  data-toggle="modal" href="#static">Upload or select image.</a></span>
+								 <input onmousedown="mouseclick.play()" type="text" class="form-control input-inline input-medium img2 "  name="<?php echo $category_image_title?>" value="<?php echo $cat_image?>" required>
+								 <span class="help-inline"><a  class="btn btn-primary btn-lg active select_img" role="button" aria-pressed="true" id="2"  data-toggle="modal" onmousedown="mouseclick.play()" href="#static">Upload or select image.</a></span>
 
 								 <!-- <span class="help-inline"><a class="select_img" id="2"  data-toggle="modal" href="#static">Upload or select image.</a></span> -->
 																 <!-- <span class="help-block">Some help goes here...</span> -->
@@ -86,7 +86,7 @@ if($is_edit == true){
 								<label for="form_control_1" class="col-sm-2 col-form-label">TEMPLATE #</label>
 
 								<div class="col-md-1  ">
-									<input type="text" class="form-control" id="form_control_1" name="<?php echo $template_num?>" value="<?php echo $template?>" required>
+									<input onmousedown="mouseclick.play()" type="text" class="form-control" id="form_control_1" name="<?php echo $template_num?>" value="<?php echo $template?>" required>
 									<!-- <span class="help-block">input template# here...</span> -->
 									<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">open to view templates </button>
 
@@ -94,13 +94,12 @@ if($is_edit == true){
 							</div>
 
 
-							<div id="myModal" class="modal fade" role="dialog">
+							<!-- <div id="myModal" class="modal fade" role="dialog">
 							  <div class="modal-dialog">
 
-							    <!-- Modal content-->
 							    <div class="modal-content">
 							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal">&times;</button>
+							        <button onmousedown="mouseclick.play()" type="button" class="close" data-dismiss="modal">&times;</button>
 							        <h4 class="modal-title">Quiz Templates Example</h4>
 							      </div>
 							      <div class="modal-body">
@@ -123,12 +122,12 @@ if($is_edit == true){
 
 							      </div>
 							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							        <button onmousedown="mouseclick.play()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							      </div>
 							    </div>
 
 							  </div>
-							</div>
+							</div> -->
 
 
 
@@ -140,11 +139,12 @@ if($is_edit == true){
 
 
             <div class="form-actions noborder">
-                <button type="submit" class="success_category_add btn blue">Submit</button>
-                <a href="<?php echo base_url()?>category" class=" btn default">Cancel</a>
+
+                <button onmousedown="mouseclick.play()" type="submit" class="success_category_add btn blue">Submit</button>
+                <a  onmousedown="mouseclick.play()" href="<?php echo base_url()?>category" class=" btn default">Cancel</a>
             </div>
             <?php if($is_edit == true){?>
-            	<input type="hidden" name="catid" value="<?php echo $cat->id?>" />
+            	<input onmousedown="mouseclick.play()" type="hidden" name="catid" value="<?php echo $cat->id?>" />
             <?php }?>
         </form>
     </div>

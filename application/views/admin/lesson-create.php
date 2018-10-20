@@ -1,4 +1,9 @@
 <?php $this->load->view('admin/inc/top');?>
+<style>
+.num{
+display:none;
+}
+</style>
  <form role="form" method="post" action="<?php echo base_url()?>lessons/post">
 <div class="portlet light bordered ">
     <div class="portlet-title">
@@ -65,7 +70,7 @@
               </div>
            </div>
             <div class="col-md-4 form-group form-md-line-input" style="margin-top: 0px">
-                <label for="form_control_1">Lesson  Name</label> <br>
+                <label for="form_control_1">Lesson  Image</label> <br>
 
               <label for="form_control_1"></label>
               <?php
@@ -98,8 +103,7 @@
 
               <div class="row">
 
-                <div class="col-md-4">
-                </div>
+
 
 
                  <!-- START LESSON EXAMPLE -->
@@ -117,8 +121,10 @@
                                  <div id="field0" class="form-body">
                                      <!-- Text input-->
                                      <?php
+
                                      $count = 1;
-                                     for ($char = 'A'; $char <= 'D'; $char++) {
+
+                                     for ($char = '1'; $char <= '6'; $char++) {
                                      ?>
                                      <div class="form-group">
                                          <div class="col-md-3">
@@ -134,7 +140,7 @@
                                              <input type="text" class="form-control input-inline input-medium imgEx<?php echo $count?>" name="imgEx[]">
                                              <input type="hidden" class="imgIdEx<?php echo $count?>" name="imgidEx[]" />
 
-                                             <span class="help-inline"><a  class="btn btn-primary btn-lg active select_img" role="button" aria-pressed="true" id="<?php echo $count?>"  data-toggle="modal" href="#static">Upload or select image.</a></span>
+                                             <span class="help-inline"><a  class="btn btn-primary btn-lg active select_img" role="button" aria-pressed="true" id="<?php echo $count?>"  data-toggle="modal" href="#static">Upload or select image/gif.</a></span>
 
                                              <!-- <span class="help-inline"><a class="select_img" id="<?php echo $count?>"  data-toggle="modal" href="#static">Upload or select image.</a></span> -->
                                          </div>
@@ -161,6 +167,25 @@
 </div>
 
 
+<!-- <div class="container">
+	<div class="row">
+        <div class="col-md-6">
+    		<h2>Custom search field</h2>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+</div> -->
+
+
 <div class="form-actions noborder">
     <button type="submit" class=" success_quiz_add btn blue">Submit</button>
     <a href="<?php echo base_url()?>lesson" class="btn default">Cancel</a>
@@ -174,7 +199,16 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title"></h4>
+
+                    <!-- <h2>search field</h2>
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control input-lg" placeholder="search" />
+
+                            </div>
+                        </div> -->
                 </div>
+
                 <div class="modal-body">
 
                 </div>

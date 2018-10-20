@@ -239,8 +239,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 
-
-
       <!-- Flash messages -->
 
           <!-- if user is  registered then it will flash an alert success -->

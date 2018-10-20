@@ -38,6 +38,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
       </head>
+      <script>
+        var mouseclick = new Audio();
+        mouseclick.src = "<?php echo site_url(); ?>assets/sound_effects/mouseclick.mp3";
+
+        var hover = new Audio();
+        hover.src = "<?php echo site_url(); ?>assets/sound_effects/click.mp3";
+
+
+
+      </script>
+
+      <!-- <script>
+        function mouseDown() {
+            document.getElementById("myo").style.color = "red";
+            document.getElementById("myon").style.color = "red";
+            document.getElementById("myonm").style.color = "red";
+            document.getElementById("myonmo").style.color = "red";
+            document.getElementById("myonmou").style.color = "red";
+            document.getElementById("myonmous").style.color = "red";
+            document.getElementById("myonmouse").style.color = "red";
+            document.getElementById("myonmouser").style.color = "red";
+
+
+        }
+
+        function mouseUp() {
+          document.getElementById("myo").style.color = "green";
+          document.getElementById("myon").style.color = "green";
+          document.getElementById("myonm").style.color = "green";
+          document.getElementById("myonmo").style.color = "green";
+          document.getElementById("myonmou").style.color = "green";
+          document.getElementById("myonmous").style.color = "green";
+          document.getElementById("myonmouse").style.color = "green";
+          document.getElementById("myonmouser").style.color = "green";
+        }
+        </script> -->
     <!-- END HEAD -->
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
@@ -78,6 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!-- END RESPONSIVE MENU TOGGLER -->
                     <!-- BEGIN TOP NAVIGATION MENU -->
                     <div class="top-menu">
+
                         <ul class="nav navbar-nav pull-right">
                             <!-- BEGIN NOTIFICATION DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class after "dropdown-extended" to change the dropdown styte -->
@@ -91,7 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                $user = $this->ion_auth->user()->row();
                             ?>
                             <li class="dropdown dropdown-user">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <a href="javascript:;" onmousedown="mouseclick.play()" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <!-- <img alt="" class="img-circle" src="<?php echo base_url()?>assets/layouts/layout/img/avatar3_small.jpg" /> -->
                                     <span class="username username-hide-on-mobile"><i class="icon-user"></i>  <?php echo ucwords($user->first_name.' '.$user->last_name)?> </span>
 
@@ -120,7 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li >
-                                <a href="<?php echo base_url(); ?>Auth/logout" class="dropdown-toggle">
+                                <a href="<?php echo base_url(); ?>Auth/logout" class="dropdown-toggle" onmousedown="mouseclick.play()">
                                     <i class="icon-logout"></i>
                                 </a>
 
@@ -166,17 +203,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
                                 <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
                                 <form class="sidebar-search  sidebar-search-bordered" action="page_general_search_3.html" method="POST">
-                                    <a href="javascript:;" class="remove">
+                                    <a href="javascript:;" class="remove" onmousedown="mouseclick.play()">
                                         <i class="icon-close"></i>
                                     </a>
-                                    <div class="input-group">
+                                    <!-- <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Search...">
                                         <span class="input-group-btn">
-                                            <a href="javascript:;" class="btn submit">
+                                            <a href="javascript:;" class="btn submit" onmousedown="mouseclick.play()">
                                                 <i class="icon-magnifier"></i>
                                             </a>
                                         </span>
-                                    </div>
+                                    </div> -->
                                 </form>
                                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
                             </li>
@@ -196,50 +233,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </ul>
                             </li> -->
                             <li class="nav-item start ">
-                                <a href="<?php echo base_url()?>user" class="nav-link nav-toggle">
+                                <a  href="<?php echo base_url()?>user" class="nav-link nav-toggle" onmousedown="mouseclick.play()" onmouseover="mouseclick.play()">
                                     <i class="icon-user"></i>
-                                    <span class="title">User Manager</span>
+                                    <span id="myo" onmousedown="mouseDown()" onmouseup="mouseUp()" class="title">User Manager</span>
                                 </a>
                             </li>
                             <li class="nav-item start ">
-                              <a href="<?php echo base_url()?>level" class="nav-link nav-toggle">
+                                <a href="<?php echo base_url()?>group" class="nav-link nav-toggle" onmousedown="mouseclick.play()" onmouseover="mouseclick.play()">
+                                    <i class="icon-user"></i>
+                                    <span id="myon" onmousedown="mouseDown()" onmouseup="mouseUp()" class="title">Group Manager</span>
+                                </a>
+                            </li>
+                            <li class="nav-item start ">
+                              <a  href="<?php echo base_url()?>level" class="nav-link nav-toggle" onmousedown="mouseclick.play()" onmouseover="mouseclick.play()">
                                 <i class="icon-home"></i>
-                                <span class="title">Level Manager</span>
+                                <span  id="myonm" onmousedown="mouseDown()" onmouseup="mouseUp()"class="title">Level Manager</span>
                               </a>
                             </li>
                             <li class="nav-item start ">
-                              <a href="<?php echo base_url()?>category" class="nav-link nav-toggle">
+                              <a href="<?php echo base_url()?>category" class="nav-link nav-toggle" onmousedown="mouseclick.play()" onmouseover="mouseclick.play()">
                                 <i class="icon-home"></i>
-                                <span class="title">Category Manager</span>
+                                <span  id="myonmo" onmousedown="mouseDown()" onmouseup="mouseUp()"class="title">Category Manager</span>
                               </a>
                             </li>
                             <br><br>
                             <li class="nav-item start ">
-                                <a href="<?php echo base_url()?>lesson" class="nav-link nav-toggle">
+                                <a  href="<?php echo base_url()?>lesson" class="nav-link nav-toggle" onmousedown="mouseclick.play()" onmouseover="mouseclick.play()">
                                     <i class="icon-user"></i>
-                                    <span class="title">Lesson Manager</span>
+                                    <span  id="myonmou" onmousedown="mouseDown()" onmouseup="mouseUp()"class="title">Lesson Manager</span>
                                 </a>
                             </li>
 
 
                             <li class="nav-item start ">
-                                <a href="<?php echo base_url()?>quiz" class="nav-link nav-toggle">
+                                <a  href="<?php echo base_url()?>quiz" class="nav-link nav-toggle" onmousedown="mouseclick.play()" onmouseover="mouseclick.play()">
                                     <i class="icon-home"></i>
-                                    <span class="title">Quiz Manager</span>
+                                    <span  id="myonmous" onmousedown="mouseDown()" onmouseup="mouseUp()"class="title">Quiz Manager</span>
                                 </a>
                             </li>
                             <li class="nav-item start ">
-                                <a href="<?php echo base_url()?>tally_admin" class="nav-link nav-toggle">
+                                <a  href="<?php echo base_url()?>tally_admin" class="nav-link nav-toggle" onmousedown="mouseclick.play()" onmouseover="mouseclick.play()">
                                     <i class="icon-home"></i>
-                                    <span class="title">TALLY BOARD</span>
+                                    <span id="myonmouse" onmousedown="mouseDown()" onmouseup="mouseUp()" class="title">TALLY BOARD</span>
                                 </a>
                             </li>
                             <br><br><br><br>
 
                             <li class="nav-item start ">
-                                <a href="<?php echo base_url()?>category_menu" class="nav-link nav-toggle">
+                                <a   href="<?php echo base_url()?>category_menu" class="nav-link nav-toggle" onmousedown="mouseclick.play()" onmouseover="mouseclick.play()">
                                     <i class="icon-home"></i>
-                                    <span class="title">START LESSON</span>
+                                    <span  id="myonmouser" onmousedown="mouseDown()" onmouseup="mouseUp()"class="title">START LESSON</span>
                                 </a>
                             </li>
 

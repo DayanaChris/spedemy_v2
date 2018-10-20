@@ -1,7 +1,8 @@
 <?php $this->load->view('admin/inc/top');?>
-<?php echo $id?>
+<?php //echo $id?>
 
-<form role="form" method="post" action="<?php echo base_url()?>lessons/edit_lesson">
+<form role="form" method="post" action="<?php echo base_url()?>lessons/update">
+  <!-- <input type="hidden" name="id" value="<?php echo $id; ?>"> -->
   <input type="hidden" name="id" value="<?php echo $id; ?>">
    <div class="portlet light bordered">
       <div class="portlet-title">
@@ -18,17 +19,38 @@
                <!-- category dropdown -->
                <div class="col-md-4">
                   <div class="form-group form-md-line-input">
+                    <?php
+                      // var_dump($categ_id_val->result());
+                      $cat_id_val = $categ_id_val->result();
+
+                     ?>
                     <select name="cat_id" class="form-control">
                     	<?php
+
           						if($category->num_rows() > 0){
           							foreach($category->result() as $cat){
           						?>
-                            <option value="<?php echo $cat->id?>"><?php echo $cat->category_name?></option>
-                                  <?php
+                            <option value="<?php echo $cat->id?>"
+                              <?php
+                                if($cat->id == $cat_id_val[0]->cat_id)
+                                  echo "selected";
+                                else {
+                                  echo "";
+                                } ?>>
+                                <?php echo $cat->category_name?>
+                            </option>
+                      <?php
           							}
+
+
+
           						}
           						?>
                     </select>
+
+                    <?php //echo set_select('cat_id', $cat_id_val, true); ?>
+                          <!-- <option value="<?php echo $cat->id?>" selected= "<?php echo $categ_id_val; ?>"><?php echo $cat->category_name?></option> -->
+
 
 
                       <label for="form_control_1">Category</label>
@@ -50,7 +72,14 @@
    </div>
 
    <div class="portlet light bordered">
-
+          <?php
+         // var_dump($categ_id_val->result());
+            // var_dump($lesson_examples->result());
+            $lesson_examples->result();
+            // $lesson_examples->result();
+            $lesson_examples->num_rows();
+            // var_dump($lesson_examples->num_rows());
+          ?>
 
             <div class="portlet-title">
                 <div class="caption font-red-sunglo">
@@ -58,27 +87,35 @@
                     <span class="caption-subject bold uppercase">Add Lesson Image</span>
                   </div>
             </div>
+            <?php
+              if($lesson->result() > 0){
+              $les_data = $lesson->row();
+            ?>
+                <div class="col-md-4">
+                    <div class="form-group form-md-line-input">
+                      <label for="form_control_1">Lesson  Name</label> <br>
+                        <input type="text" class="form-control" id="form_control_1" name="lesson_name" value="<?php echo $les_data->lesson_name; ?>" required>
 
-            <div class="col-md-4">
-                <div class="form-group form-md-line-input">
-                    <input type="text" class="form-control" id="form_control_1" name="lesson_name" value="<?php //echo $value?>" required>
+                        <span class="help-block">Some help goes here...</span>
+                    </div>
+                 </div>
 
-                    <label for="form_control_1">Lesson  Name</label> <br>
-                    <span class="help-block">Some help goes here...</span>
-                </div>
-             </div>
+
               <div class="col-md-4" style="margin-top: 20px">
                 <label for="form_control_1"></label>
                 <?php
                 $count = 0;
                 ?>
-                  <input type="text" class="form-control input-inline input-medium img<?php echo $count?>" name="img[]" required>
-                  <input type="hidden" class="imgId<?php echo $count?>" name="imgid[]" />
+                  <input type="text" class="form-control input-inline input-medium img<?php echo $count?>" name="img[]" value="<?php echo $les_data->img_name; ?>" required>
+                  <input type="hidden" class="imgId<?php echo $count?>" name="imgid[]" value="<?php echo $les_data->img_id; ?>" />
                   <span class="help-inline"><a class="select_img" id="<?php echo $count?>"  data-toggle="modal" href="#static">Upload or select image.</a></span>
                   <?php
                 $count++;
                 ?>
               </div>
+              <?php
+              }
+              ?>
 
                 <div class="col-md-4">
                   <label for="form_control_1 ">EXAMPLE TEMPLATE</label> <br>
@@ -107,43 +144,39 @@
            <div class="portlet-body form" style="margin-left: 50px">
                <div class="col-xs-12">
                    <div class="col-md-12 caption font-red-sunglo" >
-
-                     <div class="actions">
-                        <?php ?>
-                     <!-- //remove sa kay makakutaw nga part :D -->
-                     <!-- <div class="btn-group">
-                            <a class="btn btn-sm green" href="javascript:;" id="add-more"> Add more example
-                                <i class="fa fa-plus"></i>
-                            </a>
-                        </div> -->
-
-                     <?php ?>
-                     </div>
                        <div  class="form-horizontal" id="field">
                            <div id="field0" class="form-body">
                                <!-- Text input-->
                                <?php
-                               $count = 1;
-                               for ($char = 'A'; $char <= 'D'; $char++) {
+                                  if($lesson_examples->num_rows > 0)
+                                  {
+                                  $count = 1;
+                                    // $row = $lesson_examples->count();
+                                    foreach ($lesson_examples->result() as $key => $value) {
+                               // for ($char = 'A'; $char <= 'D'; $char++) {
                                ?>
                                <div class="form-group">
+                                 <input type="hidden" name="lesson_example_id[]" value="<?php echo $value->id; ?>">
                                    <div class="col-md-4">
                                        <div class="form-group form-md-line-input">
-                                           <input type="text" class="form-control " id="form_control_1" name="lessonEx[]" value="<?php //echo $value?>">
-                                           <label for="form_control_1">Example Name</label> <br>
+                                         <label for="form_control_1">Example Name</label> <br>
+                                           <input type="text" class="form-control " id="form_control_1" name="lessonEx[]" value="<?php echo $value->lesson_example_name; ?>">
                                            <!-- <span class="help-block">Some help goes here...</span> -->
                                        </div>
                                     </div>
                                    <div class="col-md-4">
-                                       <input type="text" class="form-control input-inline input-medium imgEx<?php echo $count?>" name="imgEx[]">
-                                       <input type="text" class="imgIdEx<?php echo $count?>" name="imgidEx[]" />
-                                       <span class="help-inline"><a class="select_img" id="<?php echo $count?>"  data-toggle="modal" href="#static">Upload or select image.</a></span>
-                                   </div>
+                                       <input type="text" class="form-control input-inline input-medium imgEx<?php echo $count?>" name="imgEx[]" value="<?php echo $value->img_name; ?>">
+                                       <input type="hidden" class="imgIdEx<?php echo $count?>" name="imgidEx[]" value="<?php echo $value->img_id; ?>"/>
+                                       <!-- <span class="help-inline"><a class="select_img" id="<?php echo $count?>"  data-toggle="modal" href="#static">Upload or select image.</a></span> -->
+                                       <span class="help-inline"><a  class="btn btn-primary btn-lg active select_img" role="button" aria-pressed="true" id="<?php echo $count?>"  data-toggle="modal" href="#static">Upload or select image/gif.</a></span>
 
+                                   </div>
                                </div>
                                <?php
+                                // }
                              $count++;
                                }
+                             }
                              ?>
 
                            </div>
@@ -161,7 +194,7 @@
 
 
    <div class="form-actions noborder">
-      <button type="submit" class=" success_quiz_add btn blue">Submit</button>
+      <button name="update" type="submit" class=" success_quiz_add btn blue">UPDATE</button>
       <a href="<?php echo base_url()?>lesson" class="btn default">Cancel</a>
    </div>
 

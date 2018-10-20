@@ -1,3 +1,13 @@
+<style >
+.labels{
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+   font-weight: 1000;
+   /* font-size: 10px; */
+   font-size:1.5vw;
+   line-height: 15.9px;
+}
+</style>
+
 <div  name="" class=" modal-body carousel slide actionwords_bg " data-interval="false" style="margin-bottom:30px">
      <div class="carousel-inner  " role="listbox">
          <?php
@@ -21,7 +31,10 @@
                           <img class=" mx-auto d-block" style="width:60%" src="<?php echo base_url()?>assets/uploads/<?php echo $values->img_name?>"  alt="Letter A"  >
                         </li>
                         <li class="list-group-item let  "  >
-                          <h1 class="centered_text"><?php echo $values->lesson_example_name?></h1>
+                          <h1 class="centered_text choice">
+                            <a class="labels"> <?php echo $values->lesson_example_name?>
+                              </a>
+                            </h1>
                         </li>
                       </ul>
                     </div>

@@ -6,7 +6,12 @@
     $this->load->view('templates/nav');  ?>
 
 
-
+<style>
+/* iframe {
+width: 100%    !important;
+height: auto   !important;
+} */
+</style>
 
      <body class="run-animation category_menu_bg" >
 
@@ -15,90 +20,69 @@
                    <div class="container-fluid " style=" margin-top: 0%;margin-bottom: 0%; padding-top: 70px;" id="shad" >
                        <div class="card run-animation" style="background: #CBE1FB; ">
                           <div class="card-header" style=" background:#FF1E9D"> <h2> <b> SING A LONG VIDEOS </b></h2></div>
-                          <a href="<?php echo base_url(); ?>videos_menu "> <img class="btn zoom  container float-right card-img-top img-fluid   " style="width:100px; margin-bottom:0px" src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/video_button.png"   /></a>
+                          <a href="<?php echo base_url(); ?>videos_menu "> <img class="btn zoom  container float-right card-img-top img-fluid   " style="width:100px; margin-bottom:0px" src="<?php echo site_url(); ?>assets/images/SPEDEMY/video_button.png"    /></a>
 
                           <!-- <a href="<?php echo base_url(); ?>videos_menu"> <img class="zoom  container float-right card-img-top img-fluid   " style=" width: 10%;
                               margin-top: 0px;
                               border: 0;
                               background: transparent; " src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/video_button.png"   /></a> -->
 
-                               <div     >
+                               <div>
                                       <br>
-                                      <div id="myCarousel" class="carousel slide" >
-
                                         <!-- Wrapper for slides -->
-                                        <div class="carousel-inner  " role="listbox">
-                                          <div class="item active " >
                                             <div>
+                                                  <div class="container "   >
+                                                    <div class="row">
 
-                                                              <div class="container "   >
-                                                                <!-- style="padding-bottom: 150px" -->
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/Lesson/a.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
+                                                    <div class="col   " style="padding-top:50px;margin-right:50px" >
 
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/Lesson/a.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/Lesson/a.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/Lesson/a.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/Lesson/a.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/Lesson/a.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
+                                                      <iframe width="400" height="227"  src="https://www.youtube.com/embed/XqZsoesa55w" frameborder="0"
+                                                      allow="autoplay; encrypted-media" allowfullscreen>
+                                                    </iframe>
+                                                    </div>
 
-                                                              </div>
 
-                                            </div>
-                                            <br><br> <br>
-                                          </div>
 
-                                          <div class="item " >
-                                            <div>
+                                                    <div class="col   " style="padding-top:50px;margin-right:50px" >
+                                                      <iframe width="400" height="227" src="https://www.youtube.com/embed/m8c0bh8Rg6M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+                                                    </div>
+                                                    <div class="col   " style="padding-top:50px;margin-right:50px" >
+                                                      <iframe width="400" height="227"  src="https://www.youtube.com/embed/oEo2FOghVH0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                                                    </div>
+
+
+                                                    <div class="col   " style="padding-top:50px;margin-right:50px" >
+                                                      <iframe width="400" height="227"  src="https://www.youtube.com/embed/yCjJyiqpAuU"
+                                                      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                                                    </div>
+                                                    <div class="col   " style="padding-top:50px;margin-right:50px" >
+
+                                                    <iframe width="400" height="227"
+                                                    src="https://www.youtube.com/embed/PKyuJhHQCfI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                                  </div>
+
+                                                  <div class="col   " style="padding-top:50px;margin-right:50px" >
+
+                                                    <iframe width="400" height="227" src="https://www.youtube.com/embed/13wd8KvOt58" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                                   </div>
+
+
+                                                </div>
 
 
 
                                             </div>
+
+                                            </div>
                                             <br><br> <br>
-                                          </div>
-                                        </div>
 
 
 
-                                        <!-- Left and right controls -->
-                                         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-
-                                            <span class="glyphicon glyphicon-chevron-left"></span>
-                                          </a>
-
-                                        </a>
-
-                                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                                          <span class="glyphicon glyphicon-chevron-right"></span>
-
-                                        </a>
 
 
-                                      </div>
 
                                     </div> <br>
 

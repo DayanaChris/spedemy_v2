@@ -25,45 +25,52 @@
                                <div     >
                                       <br>
 
-                                            <div>
+                                      <div>
+                                                        <div class="container "   >
+                                                          <div class="row">
 
-                                                              <div class="container "   >
-                                                                <!-- style="padding-bottom: 150px" -->
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/story/SunAndWind.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
 
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/story/AToyForSpot.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/story/AToyForSpot.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/story/GrasshopperAndAnt.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/story/TheLionAndTheMouse .mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
-                                                                  <video width="400" controls>
-                                                                      <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/story/TheMilkmaidAndHerPail.mp4" type="video/mp4">
-                                                                    </video>
-                                                                </div>
 
-                                                              </div>
 
-                                            </div>
+                                                        <div class="col   " style="padding-top:50px;margin-right:50px" >
+
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/zZd4kIb054I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+                                                        </div>
+
+
+                                                        <div class="col   " style="padding-top:50px;margin-right:50px" >
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/ripQ9jJnw1c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+                                                        </div>
+                                                        <div class="col   " style="padding-top:50px;margin-right:50px" >
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/0GGvRtuxglM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+                                                        </div>
+                                                        <div class="col   " style="padding-top:50px;margin-right:50px" >
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/iPybpc-xuG0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+                                                        </div>
+                                                        <div class="col   " style="padding-top:50px;margin-right:50px" >
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/wErvPrTOaRo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+                                                        </div>
+                                                        <div class="col   " style="padding-top:50px;margin-right:50px" >
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/QzoQcIYhnqo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+                                                        </div>
+
+
+
+
+                                                        </div>
+
+                                      </div>
                                             <br><br> <br>
                                           </div>
 

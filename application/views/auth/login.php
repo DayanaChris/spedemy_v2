@@ -62,6 +62,12 @@ License: You must have a valid license purchased only from themeforest(the above
 
         </style>
 
+        <!-- <script>
+        	var mouseclick = new Audio();
+        	mouseclick.src = "<?php echo site_url(); ?>assets/sound_effects/mouseclick.mp3";
+
+        </script> -->
+
 
        </head>
     <!-- END HEAD -->
@@ -72,7 +78,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="container-fluid">
 
 
- <a href="<?php echo base_url(); ?> "> <img  class="image-fluid float-right" style="width:5%; margin-bottom: 0px;margin-right: 2%;margin-top: 3%;"  src="<?php echo site_url(); ?>assets/pages/img/X.png"   /></a>
+ <a href="<?php echo base_url(); ?> " onclick="mouseclick.play()"> <img  class="image-fluid float-right" style="width:5%; margin-bottom: 0px;margin-right: 2%;margin-top: 3%;"  src="<?php echo site_url(); ?>assets/pages/img/X.png"   /></a>
 </div><br>
 
 
@@ -111,7 +117,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" value="" id="password"/>
                   </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn red btn-block uppercase" style="font-size: 1.5rem">Login</button>
+                    <button type="submit" class="btn red btn-block uppercase" onclick="mouseclick.play()" style="font-size: 1.5rem">Login</button>
                 </div>
 
 
@@ -164,6 +170,9 @@ License: You must have a valid license purchased only from themeforest(the above
                 });
             })
         </script>
+
+        <script src="<?php echo base_url(); ?>assets/sound_effects.js"></script>
+
     </body>
 
 </html>

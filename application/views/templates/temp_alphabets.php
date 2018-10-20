@@ -70,7 +70,9 @@
                    .extra {
                       color: inherit;
                   }
-                  h1 { font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+                
+                  h1 {
+                    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
                    font-size: 40px;
                    font-style: normal;
                    font-variant: normal;
@@ -136,7 +138,7 @@
                   .expression_bg{background-image: url("<?php echo site_url(); ?>assets/images/SPEDEMY/Lesson/Facial Expression/__Lesson/background.jpg"); }
                   .alphabets_bg{background-image: url("<?php echo site_url(); ?>assets/images/SPEDEMY/Lesson/Alphabets/_Lessons/background1.jpg"); }
                   .colors_bg{background-image: url("<?php echo site_url(); ?>assets/images/SPEDEMY/sub_menu/background.jpg"); }
-                  .actionwords_bg{background-image: url("<?php echo site_url(); ?>assets/images/SPEDEMY/Lesson/Action Words/background.jpg"); }
+                  .actionwords_bg{background-image: url("<?php echo site_url(); ?>assets/images/SPEDEMY/background/bg_green.jpg"); }
 
 
                   .expression_happy{width: 40%;  }
@@ -192,11 +194,18 @@
                       .shape2margin{margin-left: 10%}
 
                       .letterA{width: 30%;  }
+
+
+
                       .shapesLesson{width: 20%;  }
 
 
+                      .smalltext{
+                        font-size: 1.4em;
+                      }
 
-
+                      .choice{width:200px;  }
+                      .choices{width: 220px;  }
 
 
 
@@ -236,6 +245,12 @@
                   }
                    @media screen and (max-width: 576px) {
 
+                     .smalltext{
+                       font-size: 0.5em;
+                     }
+                      /* .choice{width: 30%;  } */
+                      .choice{width:10px;  }
+                      /* .choices{width: 10px;  } */
 
 
                       .btn{ width: 20%; }
@@ -285,6 +300,17 @@
                   }
 
                   @media screen and (max-width: 767px) {
+                    .choice{
+                      margin-top: 5%;
+
+                      width: 10%;  }
+                    /* .choices{width: 10%;  } */
+                    .choices{
+                      margin-top: 5%;
+                      width: 120px;  }
+
+
+
                     .smalltext{
                       font-size: 1.0em;
                     }
@@ -309,6 +335,8 @@
                  }
 
                    @media screen and (min-height: 1200px) {
+                     /* .choice{width: 10%;  } */
+
                       .btn{
                           width: 20%;
                       }

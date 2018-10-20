@@ -1,6 +1,24 @@
 <?php $this->load->view('admin/inc/top');?>
 
+<div class="col-md-6">
+
+        <div class="btn-group">
+          <!-- <a  onmousedown="mouseclick.play()" href="<?php echo base_url()?>auth/register" class="btn sbold green"> Create New USER -->
+
+            <a  onmousedown="mouseclick.play()" href="<?php echo base_url()?>auth/create_user" class="btn sbold green"> Add New USER
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <br><br><br><br>
 <div id="infoMessage"><?php echo $message;?></div>
+<div class="note note-info">
+    <p> Click <b>"ADD NEW USER's"</b> button to add student's account. </p>
+</div>
+
+
 <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
   <thead>
     <tr>
@@ -29,6 +47,12 @@
     <?php endforeach;?>
   </tbody>
 </table>
-<p><?php echo anchor('auth/register', lang('index_create_user_link'))?> | <?php echo anchor('auth/register', lang('index_create_group_link'))?></p>
+
+
+
+
+      <p><?php //echo anchor('auth/register', lang('index_create_user_link'))?> |
+
+  <?php// echo anchor('auth/create_group', lang('index_create_group_link'))?></p>
 
 <?php $this->load->view('admin/inc/footer');?>

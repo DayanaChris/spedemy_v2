@@ -1,6 +1,16 @@
 <?php
 if($method == 'index'){
 ?>
+
+<form role="form">
+
+<input  onkeydown="search_image()" id="search_image_id" class="" type="text" name="original_name" placeholder="Search image..." value="">
+
+<!-- <button type="submit" class="btn blue">Submit</button> -->
+
+</form>
+
+
 <input type="hidden" value="<?php echo $id?>" class="click_input"/>
 <div class="portlet-body">
     <ul class="nav nav-tabs">
@@ -9,12 +19,14 @@ if($method == 'index'){
         </li>
         <li class="">
             <a href="#tab_1_2" data-toggle="tab" aria-expanded="false"> Upload </a>
-        </li>   
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in" id="tab_1_1">
         	<div class="col-md-9">
+
 	           <div class="imglist"></div>
+
             </div>
             <div class="col-md-3">
             	<div class="iomgselct"></div>
@@ -31,7 +43,10 @@ if($method == 'index'){
         </div>
     </div>
 </div>
-<?php 
+
+
+
+<?php
 }
 if($method == 'img_list'){
 	if($img_list->num_rows() > 0){
@@ -43,11 +58,11 @@ if($method == 'img_list'){
       <div class="plupload_file_thumb plupload_thumb_embedded" style="width: 100px; height: 96px;">
         <img src="<?php echo base_url()?>assets/uploads/<?php echo $img->img_name?>" style="width:100%; cursor:pointer;" class="thsimsge" data-id="<?php echo $img->id?>" data-name="<?php echo $img->img_name?>" />
       </div>
-    </li>    
+    </li>
   </ul>
   <div class="plupload_clearer">&nbsp;</div>
 </div>
-<?php 
+<?php
 		}
 		echo '<div style="clear:both"></div>';
 	}else{

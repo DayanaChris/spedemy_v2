@@ -2,14 +2,16 @@
 
 <div class="col-md-6">
         <div class="btn-group">
-            <a href="<?php echo base_url()?>add-lesson" class="btn sbold green"> Add New Lesson
+            <a  onmousedown="mouseclick.play()" href="<?php echo base_url()?>add-lesson" class="btn sbold green"> Add New Lesson
                 <i class="fa fa-plus"></i>
             </a>
         </div>
     </div>
     <div style="clear:both"></div>
     <div style="height:40px; visibility:hidden"></div>
-
+    <div class="note note-info">
+        <p> Click <b>"ADD NEW LESSON's"</b> button to add new lesson. </p>
+    </div>
     <?php if($lesson->num_rows() > 0){ ?>
     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
       <thead>
@@ -36,8 +38,8 @@
 
           <td>
           <!-- <a href=""><span class="fa fa-edit"></span></a> | -->
-          <a href="<?php echo base_url()?>edit_lesson/<?php echo $info->lessonID?>"><span class="fa fa-edit"></span></a> |
-          <a href="javascript:;" class="delete_lesson" id="<?php echo $info->lessonID?>"><span class="fa fa-trash"></span></a></td>
+          <a  onmousedown="mouseclick.play()" href="<?php echo base_url()?>edit_lesson/<?php echo $info->lessonID?>"><span class="fa fa-edit"></span></a> |
+          <a  onmousedown="mouseclick.play()" href="javascript:;" class="delete_lesson" id="<?php echo $info->lessonID?>"><span class="fa fa-trash"></span></a></td>
         </tr>
         <?php endforeach;?>
       </tbody>

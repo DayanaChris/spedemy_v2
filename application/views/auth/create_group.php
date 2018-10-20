@@ -16,7 +16,10 @@
             <?php echo form_input($description);?>
       </p>
 
-      <p><?php echo form_submit('submit', lang('create_group_submit_btn'));?></p>
+   
+
+
+      <p onmousedown="mouseclick.play()"><?php echo form_submit('submit', lang('create_group_submit_btn'));?></p>
 
 <?php echo form_close();?>
 

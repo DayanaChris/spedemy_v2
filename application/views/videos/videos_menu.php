@@ -15,9 +15,12 @@
 
                                   <div class="container " style="padding: 40px" >
                                     <!-- style="padding-bottom: 150px" -->
-                                    <div class="col-sm-4   "  > <a  href="<?php echo base_url(); ?>videos/Lesson"> <img class="zoom   card-img-top img-fluid box"   src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/Lesson.png" alt="Card image cap"></a> </div>
-                                    <div class="col-sm-4   "  > <a  href="<?php echo base_url(); ?>videos/StorySeries"> <img class="zoom   card-img-top img-fluid box"   src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/StorySeries.png" alt="Card image cap"></a> </div>
-                                    <div class="col-sm-4   "  > <a  href="<?php echo base_url(); ?>videos/SingALong"> <img class=" zoom  card-img-top img-fluid box"   src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/SingALong.png" alt="Card image cap"></a> </div>
+                                    <div class="row">
+
+                                    <div class="col   "  > <a  href="<?php echo base_url(); ?>videos/Lesson"> <img class="zoom   card-img-top img-fluid box"   src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/Lesson.png" alt="Card image cap"></a> </div>
+                                    <div class="col   "  > <a  href="<?php echo base_url(); ?>videos/StorySeries"> <img class="zoom   card-img-top img-fluid box"   src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/StorySeries.png" alt="Card image cap"></a> </div>
+                                    <div class="col   "  > <a  href="<?php echo base_url(); ?>videos/SingALong"> <img class=" zoom  card-img-top img-fluid box"   src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/SingALong.png" alt="Card image cap"></a> </div>
+                                  </div>
 
 
 

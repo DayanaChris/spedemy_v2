@@ -45,6 +45,8 @@
             .learn_action_words{background-image: url("<?php echo site_url(); ?>assets/images/SPEDEMY/sub_menu/bg_action_words.jpg"); }
             .learn_facial_expressions{background-image: url("<?php echo site_url(); ?>assets/images/SPEDEMY/sub_menu/bg_facial_expressions.jpg")}
             .main_menu_bg{background-image: url("<?php echo site_url(); ?>assets/images/SPEDEMY/blue.png")}
+            .else{background-image: url("<?php echo site_url(); ?>assets/images/SPEDEMY/sub_menu/background.jpg")}
+
 
             img {
             display: block;

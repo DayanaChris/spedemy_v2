@@ -2,13 +2,16 @@
 
 <div class="col-md-6">
         <div class="btn-group">
-            <a href="<?php echo base_url()?>add-category" class="btn sbold green"> Add New Category
+            <a  onmousedown="mouseclick.play()" href="<?php echo base_url()?>add-category" class="btn sbold green"> Add New Category
                 <i class="fa fa-plus"></i>
             </a>
         </div>
     </div>
     <div style="clear:both"></div>
     <div style="height:40px; visibility:hidden"></div>
+    <div class="note note-info">
+        <p> Click <b>"ADD NEW CATEGORY's"</b> button to add new category. </p>
+    </div>
 <?php if($category->num_rows() > 0){ ?>
 <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
   <thead>
@@ -40,8 +43,8 @@
 
 
       <td>
-      <a href="<?php echo base_url()?>edit-category/<?php echo $cat->id?>"><span class="fa fa-edit"></span></a> |
-      <a href="javascript:;" class="delete_category" id="<?php echo $cat->id?>"><span class="fa fa-trash"></span></a></td>
+      <a  onmousedown="mouseclick.play()"  href="<?php echo base_url()?>edit-category/<?php echo $cat->id?>"><span class="fa fa-edit"></span></a> |
+      <a  onmousedown="mouseclick.play()" href="javascript:;" class="delete_category" id="<?php echo $cat->id?>"><span class="fa fa-trash"></span></a></td>
     </tr>
     <?php endforeach;?>
   </tbody>

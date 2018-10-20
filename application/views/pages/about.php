@@ -1,10 +1,12 @@
 <?php
-  $this->load->view('templates/header');
-  $this->load->view('templates/nav');  ?>
+//  $this->load->view('templates/header');
+  //$this->load->view('templates/nav');  ?>
 
 
 
-<body class="about_bg">
+<!-- <body class="about_bg"> -->
+<div class="about_bg">
+
   <div class="container" style="padding-top: 70px;">
 
   <div class="portlet   bordered" >
@@ -12,11 +14,7 @@
         <div class="card">
            <div class="card-header" style="text-align: center; background:#FF83C9"> <i class="icon-settings font-red-sunglo"></i> <h1> <b> ABOUT THE DEVELOPERS </b></h1></div>
         </div>
-
-
-
       </div>
-
         <div class="card" >
             <div class="container content center  " style="max-width:1000px"  >  <h3  >
               <img class="card-img-top img-fluid" style=" border-radius: 100%;"  src="<?php echo site_url(); ?>assets/images/SPEDEMY/about.png" alt="Card image cap">
@@ -84,6 +82,8 @@
 
   </div>
 
+</div>
+
 
 
 
@@ -92,4 +92,4 @@
 
 
   </div>
-  <?php  $this->load->view('templates/footer'); ?>
+  <?php //  $this->load->view('templates/footer'); ?>

@@ -63,6 +63,11 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
         </style>
+        <script>
+          var mouseclick = new Audio();
+          mouseclick.src = "<?php echo site_url(); ?>assets/sound_effects/mouseclick.mp3";
+
+        </script>
 
 
        </head>
@@ -73,7 +78,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 <div class="container-fluid">
-  <a href="<?php echo base_url(); ?> "> <img  class="image-fluid float-right" style="width:5%; margin-bottom: 0px;margin-right: 2%;margin-top: 3%;"  src="<?php echo site_url(); ?>assets/pages/img/X.png"   /></a>
+  <a href="<?php echo base_url(); ?> "> <img onmousedown="mouseclick.play()" class="image-fluid float-right" style="width:5%; margin-bottom: 0px;margin-right: 2%;margin-top: 3%;"  src="<?php echo site_url(); ?>assets/pages/img/X.png"   /></a>
  </div>
       <div class="container-fluid" >
           <div class="row justify-content-center">
@@ -92,28 +97,35 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="form-group">
                               <div class="col-md-6">
 
-                              <label for="form_control_1"  style="font-size: 1.5rem">First Name</label>
-                              <input  name="first_name" value="" id="first_name" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" required  />
+                                <label for="form_control_1"  style="font-size: 1.5rem">First Name</label>
+                                <?php echo lang('first_name', 'first_name');?> <br />
+                                <?php echo form_input($first_name );?>
+                              <!-- <input  name="first_name" value="" id="first_name" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"    /> -->
                             </div>
                           </div>
                           <div class="form-group">
                             <div class="col-md-6">
-                            <label for="form_control_1" style="font-size: 1.5rem">Last Name</label>
-                            <input  name="last_name" value="" id="last_name" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" required  />
+                              <label for="form_control_1" style="font-size: 1.5rem">Last Name</label>
+                              <?php echo lang('last_name', 'last_name');?> <br />
+                              <?php echo form_input($last_name );?>
+                            <!-- <input  name="last_name" value="" id="last_name" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"    /> -->
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-6">
-
                             <label for="form_control_1" style="font-size: 1.5rem">Email</label>
-                            <input  name="email" value="" id="email" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" required  />
+                            <?php echo lang('email', 'email');?> <br />
+                            <?php echo form_input($email );?>
+                            <!-- <input  name="email" value="" id="email" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"    /> -->
                           </div>
                         </div>
                         <div class="form-group">
                           <div class="col-md-6">
+                            <label for="form_control_1" style="font-size: 1.5rem">School Name</label>
+                            <?php echo lang('company', 'company');?> <br />
+                            <?php echo form_input($company );?>
 
-                          <label for="form_control_1" style="font-size: 1.5rem">School Name</label>
-                          <input  name="company" value="" id="company" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" required  />
+                          <!-- <input  name="company" value="" id="company" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"    /> -->
                         </div>
                       </div>
                       <?php
@@ -129,9 +141,11 @@ License: You must have a valid license purchased only from themeforest(the above
 
                       <div class="form-group">
                         <div class="col-md-6">
+                          <label for="form_control_1" style="font-size: 1.5rem">Phone Number</label>
+                          <?php echo lang('phone', 'phone');?> <br />
+                          <?php echo form_input($phone );?>
 
-                        <label for="form_control_1" style="font-size: 1.5rem">Phone Number</label>
-                        <input  name="phone" value=""  id="phone" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"  />
+                        <!-- <input  name="phone" value=""  id="phone" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off"  /> -->
                       </div>
                     </div>
 
@@ -139,12 +153,18 @@ License: You must have a valid license purchased only from themeforest(the above
                        <div class="form-group form-md-line-input">
                          <div class="col-md-6">
 
-                         <label for="form_control_1" style="font-size: 1.5rem">Select user group:</label>
+                         <label for="form_control_1" style="font-size: 1.5rem">Users Group</label>
+
                            <select name="group" class="form-control ">
-                           <?php foreach ($groups as $group){?>
-                           <option value="<?php echo $group['id']?>"><?php echo $group['name']?></option>
-                         <?php }
-                         ?>
+                             <option value="1" selected>admin</option>
+
+                         <?php
+                         // if ($_POST['group'] === '---Select group---'){
+                         //   echo "PLEASE select group";
+                         //
+                         // }
+                          ?>
+
                            </select>
                          </div>
                        </div>
@@ -170,7 +190,7 @@ License: You must have a valid license purchased only from themeforest(the above
                  <div id="infoMessage" style="color:red ;font-size: 1.5rem"><?php echo $message;?></div>
 
                  <div class="form-actions" style="margin-top: 10px">
-                   <button type="submit" class="btn   " style="font-size: 1.5rem">
+                   <button type="submit" class="btn   " onmousedown="mouseclick.play()" style="font-size: 1.5rem">
                      <img class="mx-auto d-block" src="<?php echo base_url()?>assets/images/SPEDEMY/Sign In _ Up/btn_sign.png"  style="width: 50%;" alt="" />
                    </button>
                  </div>

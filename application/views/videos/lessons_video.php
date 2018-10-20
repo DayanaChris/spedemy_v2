@@ -11,7 +11,6 @@
      <body class="run-animation category_menu_bg" >
 
 
-
                    <div class="container-fluid " style=" margin-top: 0%;margin-bottom: 0%; padding-top: 70px;" id="shad" >
                        <div class="card run-animation" style="background: #CBE1FB; ">
                           <div class="card-header" style=" background:#FF1E9D"> <h2> <b> LESSON VIDEOS </b></h2></div>
@@ -25,12 +24,53 @@
                                <div     >
                                       <br>
 
+                                      <div>
+                                                        <div class="container "   >
+                                                          <div class="row">
+
+                                                            <div class="col   " style="padding-top:50px;margin-right:50px" >
+                                                              <iframe width="400" height="227" src="https://www.youtube.com/embed/4c6FyuetSVo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                                            </div>
+                                                            <div class="col   " style="padding-top:50px;margin-right:50px" >
+
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/g74vHQ6EwjA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                                        </div>
+
+                                                          <div class="col   " style="padding-top:50px;margin-right:50px" >
+
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/ybt2jhCQ3lA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                                        </div>
+
+                                                          <div class="col   " style="padding-top:50px;margin-right:50px" >
+
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/aMFVmqWV1sY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                                        </div>
+
+                                                          <div class="col   " style="padding-top:50px;margin-right:50px" >
+
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/o5jZIswSfSE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                                        </div>
+
+                                                          <div class="col   " style="padding-top:50px;margin-right:50px" >
+
+                                                          <iframe width="400" height="227" src="https://www.youtube.com/embed/Sjx2BNyN1HQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                                        </div>
+
+                                                        </div>
+
+
+                                                        </div>
+
+                                      </div>
+
+                                      <!--
+
+
+
 
                                             <div>
-
                                                               <div class="container "   >
-                                                                <!-- style="padding-bottom: 150px" -->
-                                                                <div class="col-sm-4   " style="padding-top:50px" >
+                                                                <div class="col   " style="padding-top:50px" >
                                                                   <video width="400" controls>
                                                                       <source src="<?php echo site_url(); ?>assets/images/SPEDEMY/Videos/lesson/Alphabets.mp4" type="video/mp4">
                                                                     </video>
@@ -64,7 +104,7 @@
 
                                                               </div>
 
-                                            </div>
+                                            </div> -->
                                             <br><br> <br>
                                           </div>
 
