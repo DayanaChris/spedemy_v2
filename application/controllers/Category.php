@@ -32,7 +32,7 @@ class Category extends CI_Controller {
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 			$data = array(
-				'category' => $this->db->order_by('id', 'asc')->get_where('category')
+				'category' => $this->category->cat(),
 			);
 			$this->load->view('admin/category',$data);
 		}

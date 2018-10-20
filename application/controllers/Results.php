@@ -56,6 +56,9 @@
 
 
         $data = array(
+
+          'resultsALL' => $this->result->resultsALL(),
+
           'result' => $this->result->results(),
           'result_mod' => $this->result->result_mods(),
           'result_dif' => $this->result->result_difs(),

@@ -4,10 +4,16 @@ $route = array(
 	'default_controller' 		=> 'welcome',
 	'404_override' 					=> '',
 	'translate_uri_dashes' 	=> FALSE,
+	'user'									=> 'auth',
+	// 'quiz'									=> 'quiz',
+
 	'login' 								=> 'auth/login',
 	'register' 								=> 'auth/register',
+	'auth/create_user' 								=> 'auth/create_user',
 
-	'user'									=> 'auth',
+	'create_group' 								=> 'auth/create_group',
+
+
 	// 'quiz'									=> 'quiz',
 
 	'landing_page'					=> 'pages/landing_page',
@@ -35,6 +41,8 @@ $route = array(
 	'add-lesson' 						=> 'lessons/create',
 	'edit-category/(:num)' 	=> 'category/edit/$1',
 	'edit-level/(:num)' 		=> 'level/edit/$1',
+	'edit_group/(:num)' 		=> 'auth/edit_group/$1',
+
 
 
 	// 'edit-quiz/(:num)' 	 		=> 'quiz/edit/$1',
@@ -47,7 +55,11 @@ $route = array(
 	'category_menu' 				=>  'lessons/category_menu',
 
 	'lesson' 								=>  'lessons/lesson_menu',
+
 	'lesson/(:num)'					=> 'lessons/lesson/$1',
+
+	'group' 								=>  'auth/group',
+
 
 	'videos_menu' 					=>  'lessons/videos_menu',
 	'videos/Lesson' 				=>  'lessons/lessons_video',
@@ -65,6 +77,6 @@ $route = array(
 	'upload' 					=> 'upload/index',
 
 
-	//'add-user/(:num)'	=> 'auth/create_user/$1',
+	// 'add-user/(:num)'	=> 'auth/create_user/$1',
 	// 'edit-user/(:num)' 	=> 'auth/edit_user/$1',
 );

@@ -17,6 +17,11 @@ class Auth extends CI_Controller
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->lang->load('auth');
+
+
+		$this->user_id = $this->session->userdata('user_id');
+		$group = $this->ion_auth->get_users_groups($this->user_id)->result();
+		// $this->group_id = $group[0]->id;
 	}
 
 	/**
@@ -41,7 +46,9 @@ class Auth extends CI_Controller
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
 			//list the users
-			$this->data['users'] = $this->ion_auth->users()->result();
+			$this->data['users'] = $this->category->users()->result();
+
+
 			foreach ($this->data['users'] as $k => $user)
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
@@ -68,7 +75,9 @@ class Auth extends CI_Controller
 			// check for "remember me"
 			$remember = (bool)$this->input->post('remember');
 
-			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
+			if ($this->ion_auth->login(
+				$this->input->post('identity'),
+			 $this->input->post('password'), $remember))
 			{
 				//if the login is successful
 				//redirect them back to the home page
@@ -454,36 +463,46 @@ class Auth extends CI_Controller
 		$this->data['identity_column'] = $identity_column;
 
 		// validate form input
-		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'trim|required');
-		$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'trim|required');
-		if ($identity_column !== 'email')
-		{
-			$this->form_validation->set_rules('identity', $this->lang->line('create_user_validation_identity_label'), 'trim|required|is_unique[' . $tables['users'] . '.' . $identity_column . ']');
-			$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'trim|required|valid_email');
-		}
-		else
-		{
-			$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'trim|required|valid_email|is_unique[' . $tables['users'] . '.email]');
-		}
+		$this->form_validation->set_rules('first_name', $this->lang->line('first_name'), 'trim|required');
+		$this->form_validation->set_rules('last_name', $this->lang->line('last_name'), 'trim|required');
 		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
 		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
+
+		// $this->form_validation->set_rules('description', $this->lang->line('create_group_desc_label'), 'trim|required');
+
+		if ($identity_column !== 'email')
+		{
+			$this->form_validation->set_rules('identity', $this->lang->line('identity'), 'trim|required|is_unique[' . $tables['users'] . '.' . $identity_column . ']');
+			$this->form_validation->set_rules('email', $this->lang->line('email'), 'trim|required|valid_email');
+		}
+		else
+		{
+			$this->form_validation->set_rules('email', $this->lang->line('email'), 'trim|required|valid_email|is_unique[' . $tables['users'] . '.email]');
+		}
+
 
 		if ($this->form_validation->run() === TRUE)
 		{
 			$email = strtolower($this->input->post('email'));
 			$identity = ($identity_column === 'email') ? $email : $this->input->post('identity');
 			$password = $this->input->post('password');
-
+			$admin_id=0;
 			$additional_data = array(
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
 				'company' => $this->input->post('company'),
 				'phone' => $this->input->post('phone'),
+				'admin_id' =>  $admin_id,
+
 			);
+
+
 		}
-		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
+
+		if ($this->form_validation->run() === TRUE && $this->ion_auth->register(
+			$identity, $password, $email, $additional_data))
 		{
 			// check to see if we are creating the user
 			// redirect them back to the admin page
@@ -501,50 +520,84 @@ class Auth extends CI_Controller
 				'id' => 'first_name',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('first_name'),
+				'class'       => 'form-control form-control-solid placeholder-no-fix',
+				'onmousedown' =>'mouseclick.play()',
+        'style'       => 'font-size: 1.5rem'
 			);
 			$this->data['last_name'] = array(
 				'name' => 'last_name',
 				'id' => 'last_name',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('last_name'),
+				'class'       => 'form-control form-control-solid placeholder-no-fix',
+				'onmousedown' =>'mouseclick.play()',
+
+				'style'       => 'font-size: 1.5rem'
 			);
 			$this->data['identity'] = array(
 				'name' => 'identity',
 				'id' => 'identity',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('identity'),
+				'class'       => 'form-control form-control-solid placeholder-no-fix',
+				'onmousedown' =>'mouseclick.play()',
+
+				'style'       => 'font-size: 1.5rem'
 			);
 			$this->data['email'] = array(
 				'name' => 'email',
 				'id' => 'email',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('email'),
+				'class'       => 'form-control form-control-solid placeholder-no-fix',
+				'onmousedown' =>'mouseclick.play()',
+
+				'style'       => 'font-size: 1.5rem'
 			);
 			$this->data['company'] = array(
 				'name' => 'company',
 				'id' => 'company',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('company'),
+				'class'       => 'form-control form-control-solid placeholder-no-fix',
+				'onmousedown' =>'mouseclick.play()',
+
+				'style'       => 'font-size: 1.5rem'
 			);
 			$this->data['phone'] = array(
 				'name' => 'phone',
 				'id' => 'phone',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('phone'),
+				'class'       => 'form-control form-control-solid placeholder-no-fix',
+				'onmousedown' =>'mouseclick.play()',
+
+				'style'       => 'font-size: 1.5rem'
 			);
 			$this->data['password'] = array(
 				'name' => 'password',
 				'id' => 'password',
 				'type' => 'password',
 				'value' => $this->form_validation->set_value('password'),
+				'class'       => 'form-control form-control-solid placeholder-no-fix',
+				'onmousedown' =>'mouseclick.play()',
+
+				'style'       => 'font-size: 1.5rem'
 			);
 			$this->data['password_confirm'] = array(
 				'name' => 'password_confirm',
 				'id' => 'password_confirm',
 				'type' => 'password',
 				'value' => $this->form_validation->set_value('password_confirm'),
+				'class'       => 'form-control form-control-solid placeholder-no-fix',
+				'onmousedown' =>'mouseclick.play()',
+
+				'style'       => 'font-size: 1.5rem'
 			);
+
 			$this->data['groups'] = $groups;
+			// 'user_id' => $this->user_id,
+			// $this->data['admin_id'] = $this->user_id;
 
 			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'login', $this->data);
 			// $this->load->view('auth/login');
@@ -559,6 +612,9 @@ class Auth extends CI_Controller
 	/**
 	 * Create a new user
 	 */
+
+
+
 	public function create_user()
 	{
 		$this->data['title'] = $this->lang->line('create_user_heading');
@@ -601,8 +657,19 @@ class Auth extends CI_Controller
 				'company' => $this->input->post('company'),
 				'phone' => $this->input->post('phone'),
 			);
+
+			$additional_data = array(
+					'first_name' => $_POST['first_name'],
+					'last_name' => $_POST['last_name'],
+					'company' => $_POST['company'],
+					'phone' => $_POST['phone'],
+					'admin_id' => $this->user_id
+			);
+
+
 		}
-		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
+		if ($this->form_validation->run() === TRUE && $this->ion_auth->register(
+			$identity, $password, $email, $additional_data))
 		{
 			// check to see if we are creating the user
 			// redirect them back to the admin page
@@ -620,48 +687,64 @@ $groups = $this->ion_auth->groups()->result_array();
 				'id' => 'first_name',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('first_name'),
+				'onmousedown' =>'mouseclick.play()',
+
 			);
 			$this->data['last_name'] = array(
 				'name' => 'last_name',
 				'id' => 'last_name',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('last_name'),
+				'onmousedown' =>'mouseclick.play()',
+
 			);
 			$this->data['identity'] = array(
 				'name' => 'identity',
 				'id' => 'identity',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('identity'),
+				'onmousedown' =>'mouseclick.play()',
+
 			);
 			$this->data['email'] = array(
 				'name' => 'email',
 				'id' => 'email',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('email'),
+				'onmousedown' =>'mouseclick.play()',
+
 			);
 			$this->data['company'] = array(
 				'name' => 'company',
 				'id' => 'company',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('company'),
+				'onmousedown' =>'mouseclick.play()',
+
 			);
 			$this->data['phone'] = array(
 				'name' => 'phone',
 				'id' => 'phone',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('phone'),
+				'onmousedown' =>'mouseclick.play()',
+
 			);
 			$this->data['password'] = array(
 				'name' => 'password',
 				'id' => 'password',
 				'type' => 'password',
 				'value' => $this->form_validation->set_value('password'),
+				'onmousedown' =>'mouseclick.play()',
+
 			);
 			$this->data['password_confirm'] = array(
 				'name' => 'password_confirm',
 				'id' => 'password_confirm',
 				'type' => 'password',
 				'value' => $this->form_validation->set_value('password_confirm'),
+				'onmousedown' =>'mouseclick.play()',
+
 			);
 			$this->data['groups'] = $groups;
 			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
@@ -788,24 +871,32 @@ $groups = $this->ion_auth->groups()->result_array();
 			'id'    => 'first_name',
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('first_name', $user->first_name),
+			'onmousedown' =>'mouseclick.play()',
+
 		);
 		$this->data['last_name'] = array(
 			'name'  => 'last_name',
 			'id'    => 'last_name',
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('last_name', $user->last_name),
+			'onmousedown' =>'mouseclick.play()',
+
 		);
 		$this->data['company'] = array(
 			'name'  => 'company',
 			'id'    => 'company',
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('company', $user->company),
+			'onmousedown' =>'mouseclick.play()',
+
 		);
 		$this->data['phone'] = array(
 			'name'  => 'phone',
 			'id'    => 'phone',
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('phone', $user->phone),
+			'onmousedown' =>'mouseclick.play()',
+
 		);
 		$this->data['password'] = array(
 			'name' => 'password',
@@ -824,8 +915,61 @@ $groups = $this->ion_auth->groups()->result_array();
 	/**
 	 * Create a new group
 	 */
+
+	 public function group()
+	 {
+	 	if (!$this->ion_auth->logged_in())
+	 	{
+	 		// redirect them to the login page
+	 		redirect('auth/login', 'refresh');
+	 	}
+	 	else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+	 	{
+	 		// redirect them to the home page because they must be an administrator to view this
+	 		return show_error('You must be an administrator to view this page.');
+	 	}
+	 	else{
+
+	 		// set the flash data error message if there is one
+	 		$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+
+	 		$data = array(
+	 			'group' => $this->db->order_by('id', 'asc')->get_where('groups'),
+	 			// 'category' => $this->db->order_by('id', 'asc')->get_where('category')
+	 			'lesson' => $this->query->group_table(),
+
+	 		);
+	 		$this->load->view('admin/group',$data);
+	 	}
+		// if(isset($_POST['delete_group'])){
+		// 	$this->query->delete_group($_POST['delete_group']);
+		// }
+		// if(isset($_POST['delete_group'])){
+		// 	$this->db->delete_group('groups', array('id' => $_POST['delete_group']));
+		// }
+
+		if(isset($_POST['delete_group'])){
+			$this->db->delete('groups', array('id' => $_POST['delete_group']));
+		}
+
+
+		// if(isset($_POST['delete_group'])){
+		// 	$this->db->delete('category', array('id' => $_POST['delete_category']));
+		// }
+
+	 }
+
+
 	public function create_group()
 	{
+		// // if(isset($_POST['delete_group'])){
+		// // 	$this->query->delete_group($_POST['delete_group']);
+		// // }
+		// if(isset($_POST['delete_group'])){
+		// 	$this->db->delete_group('group', array('id' => $_POST['delete_group']));
+		// }
+
 		$this->data['title'] = $this->lang->line('create_group_title');
 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
@@ -834,11 +978,31 @@ $groups = $this->ion_auth->groups()->result_array();
 		}
 
 		// validate form input
-		$this->form_validation->set_rules('group_name', $this->lang->line('create_group_validation_name_label'), 'trim|required|alpha_dash');
+		$this->form_validation->set_rules('group_name', $this->lang->line('create_group_validation_name_label'), 'trim|required');
+		$this->form_validation->set_rules('description', $this->lang->line('create_group_desc_label'), 'trim|required');
+		// $this->form_validation->set_rules('group_code', $this->lang->line('create_group_code_label'), 'trim|required');
+
 
 		if ($this->form_validation->run() === TRUE)
 		{
-			$new_group_id = $this->ion_auth->create_group($this->input->post('group_name'), $this->input->post('description'));
+			// $new_group_id = $this->ion_auth->create_group(
+			// 	$this->input->post('group_name'),
+			// 	$this->input->post('description'),
+			// 	$this->input->post('group_code')
+			//
+			// );
+
+			$new_group_id = array(
+					'name' => $_POST['group_name'],
+					'description' => $_POST['description'],
+					// 'group_code' => $_POST['group_code'],
+
+
+					'user_id' => $this->user_id
+
+			);
+			$this->db->insert('groups', $new_group_id);
+
 			if ($new_group_id)
 			{
 				// check to see if we are creating the group
@@ -858,13 +1022,30 @@ $groups = $this->ion_auth->groups()->result_array();
 				'id'    => 'group_name',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('group_name'),
+				'onmousedown' =>'mouseclick.play()',
+
 			);
 			$this->data['description'] = array(
 				'name'  => 'description',
 				'id'    => 'description',
 				'type'  => 'text',
 				'value' => $this->form_validation->set_value('description'),
+				'onmousedown' =>'mouseclick.play()',
+
+
 			);
+			// $this->data['group_code'] = array(
+			// 	'name'  => 'group_code',
+			// 	'id'    => 'group_code',
+			// 	'type'  => 'text',
+			// 	'value' => $this->form_validation->set_value('group_code'),
+			// 	'onmousedown' =>'mouseclick.play()',
+			//
+			// );
+			// $this->data['user_id'] = $this->user_id;
+
+
+			// 'created_by' => $this->user_id
 
 			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_group', $this->data);
 		}
@@ -893,13 +1074,15 @@ $groups = $this->ion_auth->groups()->result_array();
 		$group = $this->ion_auth->group($id)->row();
 
 		// validate form input
-		$this->form_validation->set_rules('group_name', $this->lang->line('edit_group_validation_name_label'), 'required|alpha_dash');
+		$this->form_validation->set_rules('group_name', $this->lang->line('edit_group_validation_name_label'), 'required');
 
 		if (isset($_POST) && !empty($_POST))
 		{
 			if ($this->form_validation->run() === TRUE)
 			{
-				$group_update = $this->ion_auth->update_group($id, $_POST['group_name'], $_POST['group_description']);
+				$group_update = $this->ion_auth->update_group(
+					$id, $_POST['group_name'],
+					$_POST['group_description']);
 
 				if ($group_update)
 				{
@@ -926,6 +1109,8 @@ $groups = $this->ion_auth->groups()->result_array();
 			'id'      => 'group_name',
 			'type'    => 'text',
 			'value'   => $this->form_validation->set_value('group_name', $group->name),
+			'onmousedown' =>'mouseclick.play()',
+
 			$readonly => $readonly,
 		);
 		$this->data['group_description'] = array(
@@ -933,6 +1118,8 @@ $groups = $this->ion_auth->groups()->result_array();
 			'id'    => 'group_description',
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('group_description', $group->description),
+			'onmousedown' =>'mouseclick.play()',
+
 		);
 
 		$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'edit_group', $this->data);

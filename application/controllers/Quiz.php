@@ -11,7 +11,7 @@ class Quiz extends CI_Controller {
 		if (!$this->ion_auth->logged_in() ){
 			redirect(base_url().'login', 'refresh');
 		}
- 
+
 
 		$this->user_id = $this->session->userdata('user_id');
 		$group = $this->ion_auth->get_users_groups($this->user_id)->result();
@@ -105,6 +105,7 @@ class Quiz extends CI_Controller {
 			$this->query->delete_question($_POST['delete_question']);
 		}
 
+
 		if(isset($_POST['question'])){
 			$attr = array(
 				'question' => $_POST['question'],
@@ -155,40 +156,155 @@ class Quiz extends CI_Controller {
 		}
 	}
 
-	public function edit_lesson($id)
-	{
 
-		// $data['lesson'] = $this->lesson->lesson($id);
-
-		$data = array(
-			'id' => $id,
-
-		);
-			$this->load->view('auth/edit_quiz',$this->data);
-
-
-
-	}
+	// public function edit_quiz($id)
+	// {
+	//
+	// 		$data = array(
+	// 			'id' => $id,
+	//
+	// 		);
+	//
+	// 		if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin() && !($this->ion_auth->user()->row()->id == $id)))
+	// 			{
+	// 				redirect('auth', 'refresh');
+	// 			}
+	// 			if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+	// 			{
+	// 				redirect('auth', 'refresh');
+	// 		}
+	// 		//
+	// 		// $quiz = $this->query->quiz_edit($id)->row();
+	//
+	//
+	// 			// $this->db->insert('quiz', $attr);
+	// 			// $lastid = $this->db->insert_id();
+	//
+	// 					// $this->db->where('id', $this->input->quiz_edit('id'));
+	// 					// return $this->db->update('quiz', $data);
+	// 					// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'edit_quiz',$attr);
+	//
+	//
+	// 					//
+	// 					// $data = array(
+	// 					// 	'question' => $_POST['question'],
+	// 					// 	'category_id' => $_POST['category_id'],
+	// 					// 	'question_image' => $_POST['question_image'],
+	// 					// 	'background' => $_POST['background'],
+	// 					// 	'template_num' => $_POST['template_num'],
+	// 					//
+	// 					// 	'level_id' => $_POST['level_id'],
+	// 					// 	'user_id' => $this->user_id
+	// 					// );
+	//
+	// 					$data = array(
+	// 		        'id' => $id,
+	// 		        // 'lesson' =
+	// 		        'less' => $this->lesson->lessons($id),
+	// 		        'l' => $this->lesson->lesson_names($id),
+	// 		        'category' => $this->db->order_by('id', 'asc')->get_where('category'),
+	// 		        'categ_id_val' => $this->lesson->lesson_categ($id),
+	// 		        'lesson' => $this->lesson->lesson_by_id($id),
+	// 		        'lesson_examples' => $this->lesson->lesson_examples_by_id($id)
+	//
+	//
+	// 		        // 'lesson'= $id,
+	// 		        // 'lesson' =>  $this->db->get_where('lesson', $id),
+	// 		        // 'id' => $this->lesson->lesson($id),
+	//
+	// 		    			// 'category' => $this->db->order_by('id', 'asc')->get_where('category')
+	// 		    		);
+	//
+	// 					$this->load->view('auth/edit_quiz',$data);
+	//
+	//
+	// }
 
 	public function edit_quiz($id)
 	{
-
 		$data = array(
 			'id' => $id,
+			'category' => $this->db->order_by('id', 'asc')->get_where('category'),
+			'categ_id_val' => $this->query->quiz_categ($id),
+			'level' => $this->db->order_by('id', 'asc')->get_where('level'),
 
-		);
-			$this->load->view('auth/edit_quiz',$data);
+			'level_id_val' => $this->query->quiz_level($id),
+
+			'quiz' => $this->query->quiz_by_id($id),
+			'quiz_choices' => $this->query->quiz_choices_by_id($id)
+			);
+		$this->load->view('auth/edit_quiz',$data);
 
 
-
-
-		// $this->_render_page( 'auth/edit_quiz');
 
 	}
 
+	public function update()
+	{
+
+		if(isset($_POST['check_question'])){
+			if($_POST['check_question'] == 0){
+					echo 'error';
+			}else{
+					$this->load->view('answer');
+
+			}
+		}
+		// END check_question
+
+		if(isset($_POST['delete_question'])){
+			$this->query->delete_question($_POST['delete_question']);
+		}
 
 
+		if(isset($_POST['question'])){
+			$attr = array(
+				'question' => $_POST['question'],
+				'category_id' => $_POST['category_id'],
+				'question_image' => $_POST['question_image'],
+				'background' => $_POST['background'],
+				'template_num' => $_POST['template_num'],
 
+				'level_id' => $_POST['level_id'],
+
+				'user_id' => $this->user_id
+			);
+			$this->db->update('quiz', $attr, array('id' => $_POST['id']));
+
+			// $this->db->insert('quiz', $attr);
+			// $lastid = $this->db->insert_id();
+
+
+			$quiz_id = $_POST['quiz_image_id'];
+			$img= $_POST['imgid'];
+
+			foreach($img as $index=> $img){
+
+			// foreach($_POST['imgid'] as $img){
+
+				$attr = array(
+					'img_id' => $img,
+					// 'is_correct' =>$ans
+				);
+
+				$this->db->update('quiz_image', $attr, array('id' =>$quiz_id[$index]));
+
+			// $this->db->insert('quiz_image', $attr);
+			}
+
+			// // FOR QUIZ_ANSWER
+
+		 // $attr = array(
+			// 	'quiz_id' => $lastid,
+			// 	'answer' => $_POST['answer'][0],
+			// );
+			// $this->db->insert('quiz_answer', $attr);
+			redirect(base_url().'quiz');
+
+		}
+
+
+	}
 
 
 
@@ -199,8 +315,8 @@ class Quiz extends CI_Controller {
 
 
 // from post function,
-		public function c_answer()
-		{
+	public function c_answer()
+	{
 
 			// IF THE ANSWER IS CORRECT IT WILL DISPLAY THE MODAL
 			if(isset($_POST['check_question'])){
@@ -214,24 +330,42 @@ class Quiz extends CI_Controller {
 	}
 
 
-
-
-	public function gallery($id){
+	public function gallery($id)
+	{
 		$data = array(
 			'method' => 'index',
 			'id' => $id
 		);
+
 		$this->load->view('admin/media',$data);
+	}
+
+	public function img_list_search($search_image)
+	{
+
+
+		$data = array(
+			// 'method' => 'img_list_search',
+			'img_list_search' => $this->query->search_img($search_image)
+
+		);
+		 // print_r($data);
+		 // exit();
+		// redirect('admin/media',$data, 'refresh');
+
+		$this->load->view('admin/media_search',$data);
 	}
 
 	public function img_list()
 	{
-		$data = array(
-			'method' => 'img_list',
-			'img_list' => $this->db->order_by('id', 'desc')->get_where('images')
-		);
-		$this->load->view('admin/media',$data);
+			$data = array(
+				'method' => 'img_list',
+				'img_list' => $this->db->order_by('id', 'desc')->get_where('images')
+			);
+			$this->load->view('admin/media',$data);
 	}
+
+
 
 	public function upload()
 	{

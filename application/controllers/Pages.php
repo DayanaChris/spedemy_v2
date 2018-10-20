@@ -8,6 +8,9 @@
         public function landing_page(){
           $this->load->view('pages/landing_page');
         }
+        public function landing_page_content(){
+          $this->load->view('pages/landing_page_content');
+        }
         public function about(){
           $this->load->view('pages/about');
         }
