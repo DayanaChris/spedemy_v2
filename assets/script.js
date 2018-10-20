@@ -10,15 +10,88 @@ var wrong=0;
 var total_wrong=0;
 
 $(document).ready(function() {
-	"use strict";
+		"use strict";
 
-	set_start_time();
-	$(".bg").css("background-image", "url('../../assets/images/SPEDEMY/Evaluation/background_jpg.jpg')");
+		set_start_time();
+		$('.bg').css("background-image", "url('../../assets/images/SPEDEMY/Evaluation/background_jpg.jpg')");
 	// $('.modal-body').html("<img src=\"../../assets/images/wrong.png\">");
 
+		var welcome = document.getElementById('welcometospedemy');
+	  setTimeout(function(){
+	      welcome.play();
+	  }, 1000);
 
-	var url = $('.base_url').html();
-	var loader = 'Loading';
+		// var player = document.getElementById('player');
+	  // setTimeout(function(){
+	  //     player.play();
+	  // }, 3000);
+
+	// var bg_landing = document.getElementById('bg_landing');
+	// setTimeout(function(){
+	// 		bg_landing.play();
+	// });
+
+		var url = $('.base_url').html();
+		var loader = 'Loading';
+
+
+
+	// $("#name").on('keyup change', function(){
+	//   if($(this).val() != ""){
+	//     // $("#nameVal").text($(this).val());
+	//     // $(".name").show();
+	// 		var content=
+	//
+	// 		var content =
+	// 					'			<div class="form-group">'+
+	// 					'					<div class="col-md-3">'+
+	// 					'							<div class="form-group form-md-line-input">'+
+	// 					'								<label for="form_control_1">Example Name # <?php echo $count; ?></label> <br>'+
+	// 					'									<input type="text" class="form-control " id="form_control_1" name="lessonEx[]" value="<?php //echo $value?>">'+
+	// 					'									<!-- <span class="help-block">Some help goes here...</span> -->'+
+	// 					'							</div>'+
+	// 					'					 </div>'+
+	//
+	// 					'					<div class="col-md-3 form-group form-md-line-input" style="margin-left: 5px">'+
+	// 					'						<label for="form_control_1">Example Image # <?php echo $count; ?></label> <br>'+
+	// 					'							<input type="text" class="form-control input-inline input-medium imgEx<?php echo $count?>" name="imgEx[]">'+
+	// 					'							<input type="hidden" class="imgIdEx<?php echo $count?>" name="imgidEx[]" />'+
+	//
+	// 					'							<span class="help-inline"><a  class="btn btn-primary btn-lg active select_img" role="button" aria-pressed="true" id="<?php echo $count?>"  data-toggle="modal" href="#static">Upload or select image.</a></span>'+
+	//
+	// 					'							<!-- <span class="help-inline"><a class="select_img" id="<?php echo $count?>"  data-toggle="modal" href="#static">Upload or select image.</a></span> -->'+
+	// 					'					</div>'+
+	//
+	// 					'			</div>';
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//   }else{
+	//     $(".name").hide();
+	//   }
+	// });
+
+
+
+	$(function(){
+		// $('a.click').click(function(){
+		// 	$('embed').remove();
+		// 	$('body').append('<embed src="click.wav" autostart="true" hidden="true" loop="false">');
+		// });
+
+		$('a.hover').mouseover(function(){
+			$('embed').remove();
+			$('body').append('<embed src="hover.wav" autostart="true" hidden="true" loop="false">');
+		});
+	});
+
+
+
+
 	$('.delete_category').click(function(e){
 		e.preventDefault();
 		var catid = this.id;
@@ -57,6 +130,18 @@ $(document).ready(function() {
 		})
 
 	});
+
+	$('.success_group_add').click(function(e){
+		swal({
+			title: "Successfull!",
+			text: "You have successfully added a Group!",
+			icon: "success",
+
+		})
+
+	});
+
+
 	$('.success_quiz_add').click(function(e){
 		swal({
 			title: "Successfull!",
@@ -103,6 +188,36 @@ $(document).ready(function() {
 				});
 
 		  }
+		});
+	});
+
+	$('.delete_group').click(function(e){
+		e.preventDefault();
+		var id_group = this.id;
+		swal({
+			title: "Delete Group?",
+			text: "Are you sure you want to delete this group?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+		.then((willDelete) => {
+			if (willDelete) {
+					$.ajax({
+					url : url+"auth/group",
+					type : 'POST',
+					data : {
+						'delete_group': id_group
+					},
+					success : function() {
+						$('.delete-'+id_group).fadeOut();
+						swal("Poof! Group successfully deleted!", {
+							icon: "success",
+						});
+					}
+				});
+
+			}
 		});
 	});
 
@@ -164,17 +279,40 @@ $(document).ready(function() {
 		});
 	});
 
+	//
+	// $('.select_img').click(function(){
+	// 	var id = this.id;
+	// 	$('.modal-title').html('Select Files');
+	// 	$('.modal-body').html(loader);
+	//
+	// 	$('.modal-body').load(url+"quiz/gallery/"+id, function(){
+	// 		uploader();
+	// 		load_gallery();
+	// 		$('.gallery').click(function(e){
+	// 			e.preventDefault();
+	// 			load_gallery();
+	// 		});
+	// 	});
+	// });
+
 
 	function load_gallery(){
 		$('.imglist').html(loader);
+
 		$('.imglist').load(url+"quiz/img_list/", function(){
 			$('.thsimsge').click(function(e){
 				e.preventDefault();
 				$('.useimg').removeClass('hide');
 				var name = $(this).attr('data-name');
+				var orig_name = $(this).attr('data-origname');
+
 				var id = $(this).attr('data-id');
 				$('.iomgselct').html('<img src="'+url+'/assets/uploads/'+name+'" style="width:100%" />');
+
+				// $('.iomgselct').html('<img src="'+url+'/assets/uploads/'+orig_name+'" style="width:100%" />');
 				$('.image_name').val(name);
+				$('.orig_name').val(orig_name);
+
 				$('.image_id').val(id);
 			});
 			$('.useimg').click(function(){
@@ -188,6 +326,36 @@ $(document).ready(function() {
 				$('.modal').modal('hide');
 			});
 		});
+
+
+				$('.imglistsearch').html(loader);
+				$('.imglistsearch').load(url+"quiz/img_list_search/", function(){
+					$('.thsimsge').click(function(e){
+						e.preventDefault();
+						$('.useimg').removeClass('hide');
+						var name = $(this).attr('data-name');
+						var orig_name = $(this).attr('data-origname');
+
+						var id = $(this).attr('data-id');
+						$('.iomgselct').html('<img src="'+url+'/assets/uploads/'+name+'" style="width:100%" />');
+
+						// $('.iomgselct').html('<img src="'+url+'/assets/uploads/'+orig_name+'" style="width:100%" />');
+						$('.image_name').val(name);
+						$('.orig_name').val(orig_name);
+
+						$('.image_id').val(id);
+					});
+					$('.useimg').click(function(){
+						var input_put = $('.click_input').val();
+						$('.img'+input_put).val($('.image_name').val());
+						$('.imgEx'+input_put).val($('.image_name').val());
+
+						$('.imgId'+input_put).val($('.image_id').val());
+						$('.imgIdEx'+input_put).val($('.image_id').val());
+
+						$('.modal').modal('hide');
+					});
+				});
 	}
 
 	 var next = 0;
@@ -366,7 +534,7 @@ $(document).ready(function() {
 
 
 						}else if(!response.includes("great") ){
-							$('.modal-body').html("<img src=\"../../assets/images/wrong1.png\">");
+							$('.modal-body').html("<audio  autoplay><source src=\"../../assets/sound_effects/wrong.mp3\" type=\"audio/mp3\"></audio><img src=\"../../assets/images/wrong1.png\">");
 							attempts++;
 
 							if(wrong==0){
@@ -468,9 +636,9 @@ $('.clickLessonImage').click(function(){
 
 });
 
-function get_image_id(id,lesson_name){
+function get_image_id(id,img_id){
 	$.ajax({
- 	 url : "../lessons/lesson_example/"+id+"/"+lesson_name,
+ 	 url : "../lessons/lesson_example/"+id+"/"+img_id,
  	 type : 'POST',
 
  	 success : function(response) {
@@ -524,6 +692,57 @@ function get_total_time(){
 	  $("#total_time").val(total_time);
 
 }
+
+
+function search_image(){
+
+		var search = $("#search_image_id").val();
+		// alert(search);
+		$.ajax({
+		 url : "quiz/img_list_search/"+search,
+		 type : 'POST',
+
+		 success : function(response) {
+			 // console.log(response);
+
+					$('.imglist').html(response);
+					$('.thsimsge').click(function(e){
+						e.preventDefault();
+						$('.useimg').removeClass('hide');
+						var name = $(this).attr('data-name');
+						var orig_name = $(this).attr('data-origname');
+
+						var id = $(this).attr('data-id');
+						$('.iomgselct').html('<img src="assets/uploads/'+name+'" style="width:100%" />');
+
+						// $('.iomgselct').html('<img src="'+url+'/assets/uploads/'+orig_name+'" style="width:100%" />');
+						$('.image_name').val(name);
+						$('.orig_name').val(orig_name);
+
+						$('.image_id').val(id);
+					});
+					$('.useimg').click(function(){
+						var input_put = $('.click_input').val();
+						$('.img'+input_put).val($('.image_name').val());
+						$('.imgEx'+input_put).val($('.image_name').val());
+
+						$('.imgId'+input_put).val($('.image_id').val());
+						$('.imgIdEx'+input_put).val($('.image_id').val());
+
+						$('.modal').modal('hide');
+					});
+
+			 },
+
+		}); //END  AJAX
+}
+
+function lesson_input(){
+		$('#field0').html();
+
+}
+
+
 
 
 
