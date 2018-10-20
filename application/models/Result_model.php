@@ -9,11 +9,17 @@ class Result_model extends CI_Model
 
 
 	public function resultsALL(){
+		$user = $this->ion_auth->user()->row();
+
 		$query = $this->db->select('*, level.level_name,results.id as resultID')
 				->from('results')
 				->join('users', 'results.user_id = users.id')
 				->join('level', 'results.level_id = level.id')
 				->join('category', 'results.category_id = category.id')
+				// ->where('results.user_id',$user->id)
+				// ->where('results.user_id',$user->admin_id)
+
+
 				->order_by('results.id','desc')
 
 				->get();
@@ -21,12 +27,15 @@ class Result_model extends CI_Model
 	}
 
 	public function results(){
+		$user = $this->ion_auth->user()->row();
+
 		$query = $this->db->select('*, level.level_name,results.id as resultID')
 				->from('results')
 				->join('users', 'results.user_id = users.id')
 				->join('level', 'results.level_id = level.id')
 				->join('category', 'results.category_id = category.id')
 
+				// ->where('results.user_id',$user->admin_id)
 
 				->where('results.level_id=1')
 				->order_by('results.id','desc')

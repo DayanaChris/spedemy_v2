@@ -13,16 +13,24 @@ class Query_model extends CI_Model
 		$this->db->delete('quiz_image', array('quiz_id' => $id));
 	}
 
-
+	public function delete_group($id){
+		$this->db->delete('groups', array('id' => $id));
+		$this->db->delete('users_group', array('group_id' => $id));
+		// $this->db->delete('users', array('group_id' => $id));
+	}
 
 	public function quiz_cat(){
+		$user = $this->ion_auth->user()->row();
 		$query = $this->db->select('*, quiz.id as quizID')
 				->from('quiz')
 				->join('category', 'quiz.category_id = category.id')
 				->join('level', 'quiz.level_id = level.id')
+				->where('quiz.user_id',$user->id)
 				->get();
 		return $query;
 	}
+
+
 
 	public function quiz_edit($id){
 		$query = $this->db->select('*, quiz.id as quizID')
@@ -32,6 +40,13 @@ class Query_model extends CI_Model
 				->where('quiz.id', $id)
 				->get();
 		return $query;
+	}
+
+	public function group_table(){
+		$query = $this->db->select('*')
+											 ->from('groups')
+											 ->get();
+			return $query;
 	}
 
 	// select * from quiz
@@ -180,6 +195,69 @@ class Query_model extends CI_Model
 		return $query;
 	}
 
+	public function orig_name(){
+		$query = $this->db->select('original_name')
+								->from('images')
+								->order_by('id', 'desc')
+								// ->where('original_name','A.png')
+
+
+
+
+								->get();
+		return $query;
+	}
+
+
+	public function image_list($search){
+		$query = $this->db->select('')
+															->from('images')
+															->where('original_name', $search)
+															->order_by('id', 'desc')
+
+															->get();
+		return $query;
+	}
+
+
+	public function search_img($search){
+		$query = $this->db->select('')
+								->from('images')
+								// ->where('original_name', 'like', '%'.$search.'%')
+								->like('original_name', $search)
+								->order_by('id', 'desc')
+								// ->where('original_name','A.png')
+
+								->get();
+		return $query;
+	}
+
+
+// 	function search_img($search) {
+//     $select_query = "Select * from images where original_name = '.$search.' ";
+//     $query = $this->db->query($select_query);
+//     return $query->result();
+// }
+
+
+public function scopeSearch($query, $search_product){
+
+        $result = $query->where('original_name', 'like', '%' .$search_product. '%');
+        return $result;
+    }
+
+
+
+// function getSearch($search) {
+//     if(empty($search))
+//        return array();
+//
+//     $result = $this->db->like('original_name', $search)
+//              ->get();
+//
+//     return $result->result();
+// }
+
 
 	//	WORKING QUERY FOR DISPLAY LESSON IMAGES
 	// SELECT * from `lesson_image`
@@ -188,7 +266,56 @@ class Query_model extends CI_Model
 	// join lesson_manager on lesson_image.img_id= images.id
 	// join category on category.id= lesson.cat_id
 	// where lesson_manager.lesson_image_id= lesson_image.id and lesson.cat_id=4
+//
+// Select original_name from images;
 
+	public function quiz_categ($id){
+		$query = $this->db->select('quiz.category_id')
+											 ->from('quiz')
+											 ->join('category', 'quiz.category_id = category.id', 'left' )
+											 ->where('quiz.id', $id)
+											 ->group_by('quiz.category_id')
+											 ->get();
+			return $query;
+	}
+	public function quiz_level($id){
+		// $user = $this->ion_auth->user()->row();
+
+		$query = $this->db->select('quiz.level_id')
+											 ->from('quiz')
+											 ->join('level', 'quiz.level_id = level.id', 'left' )
+											 ->where('quiz.id', $id)
+											 ->group_by('quiz.level_id')
+											 ->get();
+			return $query;
+	}
+
+	public function quiz_by_id($id){
+		// $user = $this->ion_auth->user()->row();
+
+		$query = $this->db->select('question,question_image, template_num, background')
+											 ->from('quiz')
+											 ->where('quiz.id', $id)
+											 ->get();
+			return $query;
+	}
+
+
+	public function quiz_choices_by_id($id){
+		$query = $this->db->select('images.img_name, images.img_name, quiz_image.img_id, quiz_image.id')
+											 ->from('quiz_image')
+											 ->join('quiz', 'quiz_image.quiz_id = quiz.id','left')
+
+											 ->join('images', 'quiz_image.img_id = images.id', 'left')
+											 ->where('quiz.id', $id)
+											 ->get();
+			return $query;
+	}
+
+// 	select * from quiz_image
+// join quiz on quiz_image.quiz_id = quiz.id
+// join images on quiz_image.img_id = images.id
+// where quiz.id= 2
 
 
 

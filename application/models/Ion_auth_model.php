@@ -1074,7 +1074,7 @@ class Ion_auth_model extends CI_Model
 				{
 					$this->remember_user($user->id);
 				}
-                
+
 				// Regenerate the session (for security purpose: to avoid session fixation)
 				$this->_regenerate_session();
 
@@ -2125,7 +2125,7 @@ class Ion_auth_model extends CI_Model
 			{
 				$this->remember_user($user->id);
 			}
-            
+
 			// Regenerate the session (for security purpose: to avoid session fixation)
 			$this->_regenerate_session();
 

@@ -17,5 +17,56 @@ class Category_model extends CI_Model
 			return $query;
 	}
 
+	public function cat(){
+		$user = $this->ion_auth->user()->row();
+
+		$query = $this->db->select()
+											 ->from('category')
+											 ->where('created_by',$user->id)
+											 ->order_by('id', 'asc')
+											 ->get();
+			return $query;
+	}
+
+	public function cat_user(){
+		$user = $this->ion_auth->user()->row();
+
+		$query = $this->db->select('*, category.id')
+											 ->from('category')
+											 ->join('users', 'category.created_by = users.admin_id ')
+											 ->where('category.created_by', $user->admin_id)
+											 ->group_by('category.id')
+											 // ->group_by('category.id', 'asc')
+											 ->get();
+			return $query;
+	}
+
+	// select * from category
+	// join users on category.created_by = users.admin_id
+	// where category.created_by =31
+
+
+	public function users(){
+		$user = $this->ion_auth->user()->row();
+
+		$query = $this->db->select()
+											 ->from('users')
+											 ->where('admin_id',$user->id)
+											 ->order_by('id', 'asc')
+											 ->get();
+			return $query;
+	}
+
+	public function groups(){
+		$user = $this->ion_auth->user()->row();
+
+		$query = $this->db->select()
+											 ->from('groups')
+											 ->where('user_id',$user->id)
+											 ->order_by('id', 'asc')
+											 ->get();
+			return $query;
+	}
+
 
 }
